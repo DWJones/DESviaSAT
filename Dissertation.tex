@@ -323,15 +323,16 @@ RSA is named after its inventors Ron Rivest, Adi Shamir and Len Adleman. RSA was
 
 \section{Block Ciphers}
 \label{sec:BCipher}
+%explain this better with regards to this formula being the length of a block cipher
 
 A block cipher is defined as a symmetric-key encryption scheme with
 \begin{displaymath}
  M = C = \{0,1\}^{n}
 \end{displaymath}
 $n$ is the block length of the cipher \cite{DBLP:series/isc/DelfsK07}. Block ciphers are used to encrypt blocks of bits of a fixed length to a new different output \cite{DBLP:books/sp/Buchmann02}. For example if the input length of a block cipher is 8 bits, then the output block cipher will also be 8 bits long. A block cipher is referred to as a cryptosystem if its plain text and cipher text are of the same length.A block cipher will map an original Plain text into a cipher text with the use of permutation. Block ciphers are closely related to binary arithmetic in how to calculate the new values and current values of which will be shown later.
-A block cipher is made up of two algorithms which we will call E and D (Encryption and decryption algorithm). Both of these algorithms take in a key called K. Given a Plain text (PT) the encryption will take in a key and map both these inputs to an output. This output is the Cipher text (CT). This can be seen in Figure \ref*{fig:2.2.1}
+A block cipher is made up of two algorithms which we will call E and D (Encryption and decryption algorithm). Both of these algorithms take in a key called K. Given a Plain text (P) the encryption will take in a key and map both these inputs to an output. This output is the Cipher text (C). This can be seen in Figure \ref*{fig:2.2.1}
 
-
+%Change the illustration from PT Block to P Block
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.5]{BlockCipher.png}
@@ -418,6 +419,7 @@ DES uses an algorithm to encrypt data which is called the Feistel network \cite{
 FeistelNetwork: \{0,1\}^n \rightarrow \{0,1\}^n
 \end{displaymath}
 The aim of the Feistel network is to build up an intervertebral function
+%better explanation of what a intervertable function is or refer to what it is
 \begin{displaymath}
 F: \{0,1\}^{2n} \rightarrow \{0,1\}^{2n}
 \end{displaymath}
@@ -454,6 +456,7 @@ M = ABCDEF0123456789
 \end{displaymath}
 We would rewrite this in a binary format to get our 64 bit plain text. In a table this would look like:
 
+%Label this table
 \begin{center}
 \begin{tabular}{ |c|c|c|c|c|c|c|c|c| }
 \hline
@@ -476,6 +479,7 @@ A \Rightarrow A = \{(x_{1}...x_{1}, y_{1}...y_{4})\}
 \end{displaymath}
 This translates as A having the binary value `1010', which is the binary for the letter A. Now we have made the connection between Block ciphers and binary arithmetic. The message will then result in a collection of 64 binary digits:
 
+%Label this output
 \begin{displaymath}
 M = 1010 1011 1100 1101 1110 1111 0000 0001 0010 0011 0101 0110 0111 1000 1001
 \end{displaymath}
@@ -497,6 +501,7 @@ As a result, IP must then be:
 IP(_{p}) = p_{47}, p_{23}, p_{52},...,p_{3}
 \end{displaymath}
 
+%Label this table
 \begin{center}
 \begin{tabular}{ |c|c|c|c|c|c|c|c| }
 \hline
@@ -512,6 +517,7 @@ IP(_{p}) = p_{47}, p_{23}, p_{52},...,p_{3}
 \end{center}
 The new mapping of IP gives us Table(a). We can then apply a key to this table to produce our first round table.
 
+%Label this table
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|} \hline
 K = & 0001 & 0011 & 0011 & 0100 & 0101 & 0111 & 0111 & 1001
 \\ \hline
@@ -526,6 +532,7 @@ We then will compute the XOR as stated by the Feistel network. So as a result th
 
 This result will be as
 
+%Label this table
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|c|c|c|} \hline
 C$_{0}$ & 1111 & 0000 & 1100 & 1100 & 1010 & 1010 & 1111\\ \hline
@@ -537,6 +544,7 @@ D$_{1}$ & 1010 & 1010 & 1001 & 1001 & 1110 & 0011 & 1110\\ \hline
 
 Using the key one would XOR both C$_{1}$ and D$_{1}$ and will get:
 
+%Label this table
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|}\hline
 K$_{1}$ & 0001 & 1011 & 0000 & 0010 & 1110 & 1111 & 1111 & 1100 & 0111 & 0000 & 0111 & 0010\\ \hline
@@ -545,6 +553,7 @@ K$_{1}$ & 0001 & 1011 & 0000 & 0010 & 1110 & 1111 & 1111 & 1100 & 0111 & 0000 & 
 
 The next step is to use the key to obtain
 
+%Label this table
 \begin{tabular}{|c|c|c|c|c|}\hline
 $E(R_{0}) \oplus K_{1}$ & 0110 & 0001 & 0001 & 0111\\ \hline
 \end{tabular}
@@ -625,7 +634,7 @@ $p$ & $q$ & $p \land q$ & $p \lor q$ & $p \Rightarrow q$ & $p \equiv q$ & $p \op
 \end{tabular}
 \end{center}
 \begin{center}
-\label{Figure:4.2.3}{Figure 4.2.3: Five binary functors.}
+\label{Figure:5.2}{Figure 5.2: Five binary functors.}
 \end{center}
 
 The \emph{Conjunction} functor ($\land$) takes two Bool elements from a set $\{0,1\}$ and will return true if the elements of both elements are $1$. If however either one of the two elements or both are $0$, then the Conjunction of the two elements will return $0$. The \emph{Disjunction} functor $(\lor)$ takes two Bool elements from a set $\{0,1\}$ and will return a true value if both elements are valued as $1$, or either one of the two elements are equal to $1$. If however neither of the two elements are equal to $1$, then the Disjunction will return $0$. The \emph{Implication} functor $(\Rightarrow)$ takes two Bool from a set $\{0,1\}$ and will return true if both elements are equal to $1$, both elements are equal to $0$ or the first element is $0$ and the second element is $1$, as this says that false implies true which is true. However the implication functor will return true if the elements assignments are for the first element $1$ and the second is $0$, as this implies that truth implies false which is false. \emph{Equivalence} functor takes two Bool elements from a set $\{0,1\}$ and will return true if the elements assignments are both either $1$ or $0$. However, if one of the two elements is $1$ while the other is $0$, then the equivelance of the two elements will evaluate to $0$.
@@ -748,6 +757,7 @@ As a result we have produced a new CNF. By using this method we prove a formulas
 \subsection{Example of a Formula being Satisfiable}
 \label{subsec:ExampleFormSAT}
 
+%provide a assumption to defin and example
 \begin{enumerate}
 \item $f:= (a \lor b \lor \neg c)$
 \item $\varphi: Var (f) \rightarrow \{0,1\}$
@@ -852,6 +862,7 @@ BlockCipher: \{0,1\}^{1} \times \{0,1\}^1 \rightarrow \{0,1\}^1
 \end{displaymath}
 This can be shown via a truth table to show the Boolean output for if the three variables are all true. With this truth table we have 2 variables. This means our output in the cipher will be 2$^{n}$ which in this case is 4.
 
+%Label this table
 \begin{center}
 \begin{tabular}{|c|c|c|}
 \hline
@@ -864,6 +875,7 @@ Plain text & Key & Cipher\\ \hline
 \end{center}
 Permutation assigns all bits in the plain text to appear in the Cipher. This means we must then fill out the rest of the table following the function of permutation, F: D$_{i} \rightarrow$ D$_{i}$
 
+%Label this table
 \begin{center}
 \begin{tabular}{|c|c|c|}
 \hline
@@ -876,7 +888,7 @@ Plain text & Key & Cipher\\ \hline
 \end{center}
 From this table we can now form a relation between the satisfiability of the C, K and P.
 
-
+%Label this table
 \begin{center}
 \begin{tabular}{|c|c|c|c|}
 \hline
@@ -1096,6 +1108,7 @@ Git is a program that allows a user to push pull and fork repository's and mainl
 \section{Time Line}
 \label{sec:TimeLine}
 
+%Label this table
 \begin{center}
 \begin{tabular}{|c|p{5cm}|}
 \hline
