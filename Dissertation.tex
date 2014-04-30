@@ -46,7 +46,7 @@ Encrypting messages and decrypting messages has held an interest with me along w
 
 
 
-\section{Aims of the project}
+\section{Aims of the Project}
 \label{cha:Aims}
 
 The project will be focused on constructing an understanding of the Data Encryption Standard (DES), where one is able to encrypt messages and decrypt a message via a key. The second part of the project is to study SAT to gain an understanding of the subject so it can then start to be linked into the attacking of DES. Additionally the DES should be applied and developed into a Conjunctive Normal Form.
@@ -64,7 +64,7 @@ The aims of the project:
 \end{enumerate}
 
 
-\section{Science engineering}
+\section{Science Engineering}
 \label{sec:SciEng}
 
 The main aim of the project has already been declared, but there are additional objectives which must be taken into account when writing the research paper.
@@ -85,7 +85,7 @@ There have been some published papers which are similar to the topic area, but n
 The interaction between Propositional Satisfiability and Applications in Cryptography and Ramsey Problems \cite{Gwynne2010Interaction} is a recently published thesis that looks at a different encryption standard called Advanced Encryption Standard (AES). The paper first of all outlines and declares what Boolean functions are and SAT. The thesis paper goes into depth of how the AES works by giving a very detailed explanation along with examples of how it is runs. Then there is a translation of AES into SAT with the use of Conjunctive Normal Form (CNF). The framework within the thesis provided a translation of satisfiability theorems to be used in encryption. A lot of the work talks about breaking AES which is a successor of DES. However techniques used to break AES can be adopted and will be closely linked to DES.
 Other work such as Logical Cryptanalysis as a SAT Problem \cite{Fabio2000LogicalSAT} outlines DES which gives a great framework to use, covering everything step by step from the initial permutation to the generation of keys. A detailed analysis of this paper has been given in chapter \ref{cha:LitReview}. This gives one an in depth knowledge about some previous frameworks that have been developed and background knowledge about other cryptanalysis areas. %detialed analysis and in depth look of the paper is found in the next chapter   
 
-There are other cryptanalysis techniques which include differential cryptanalysis. Differential cryptanalysis was the first method to break DES faster than the previous brute force method that the exhaustive search did. The method is based up having a device which can encrypt data with a hard-wired secret key, and we assume that we don't have the tools to `read' the key within a chip. What we then do, is to choose some blocks of data and to encrypt them with the device. The data analysis will then compute the key by analysing roughly $2^{47}$ chosen plain text bits \cite{Junod2013LASEC}. This reduced  the probability of success as we cut out a lot of computation compared to 2$^{56}$.
+There are other cryptanalysis techniques which include differential cryptanalysis. Differential cryptanalysis was the first method to break DES faster than the previous brute force method that the exhaustive search did. The method is based on having a device which can encrypt data with a hard-wired secret key, and we assume that we don't have the tools to `read' the key within a chip. What we then do, is to choose some blocks of data and to encrypt them with the device. The data analysis will then compute the key by analysing roughly $2^{47}$ chosen plain text bits \cite{Junod2013LASEC}. This reduced  the probability of success as we cut out a lot of computation compared to 2$^{56}$.
 
 
 
@@ -108,17 +108,17 @@ A literature review is written by someone to view the critical points of current
 
 
 
-\section{Analysis of findings}
+\section{Analysis of Findings}
 \label{sec:AnalysisOF}
 
 %review the paper and gather meaningful data to discuss. Additiaonlly discuss what was not talked about (universal backdoor key)
 
-\section{Relevance of the paper}
+\section{Relevance of the Paper}
 \label{sec:RelOfPaper}
 
 %outline the relevance of the paper in the subject area and how it has opened up ways of attacking DES. What work has been expanded because of this paper.
 
-\section{Progress since publication}
+\section{Progress Since Publication}
 \label{sec:ProgressSP}
 
 %What has happened in the subject area since the paper has been published? What is the relevance of that work? This section should flow straight from the previous section as it will have some links 
@@ -225,7 +225,7 @@ P = D (K, C)
 The notation for decrypting shows that putting the Cipher text and key together in the decryption algorithm will output a Cipher text.
 
 \textbf{Symmetric and asymmetric encryption}
-Symmetric-key encryption schemes provide secure communication for a pair of communication partners \cite{DBLP:series/isc/DelfsK07}. Symmetric-key encryption algorithms have the fastest implementations in hardware and software. Therefore, they are very well-suited to the encryption of large amounts of data \cite{DBLP:series/isc/DelfsK07}. In symmetric encryption the encryption key will always be the same as the decryption key. We there for say within asymmetric encryption that E$_{K}$ = D$_{K}$. This is seen and proven in the encryption and decryption notation as both P and C can be interchanged to produce either the Plain text or Cipher text respectively.In asymmetric encryption the encryption key and decryption key are unique and the computation of decryption from encryption is infeasible. Compared to symmetric encryption, the asymmetric encryption key can be made public \cite{DBLP:series/isc/DelfsK07}. However the decryption key is still kept a secret. Because anyone can use the encryption key it is called the “public” key. For a public key it is useful to have two different key spaces since the public key and the private key are shaped differently \cite{DBLP:series/isc/DelfsK07}.
+Symmetric-key encryption schemes provide secure communication for a pair of communication partners \cite{DBLP:series/isc/DelfsK07}. Symmetric-key encryption algorithms have the fastest implementations in hardware and software. Therefore, they are very well-suited to the encryption of large amounts of data \cite{DBLP:series/isc/DelfsK07}. In symmetric encryption the encryption key will always be the same as the decryption key. We therefore say within asymmetric encryption that E$_{K}$ = D$_{K}$. This is seen and proven in the encryption and decryption notation as both P and C can be interchanged to produce either the Plain text or Cipher text respectively.In asymmetric encryption the encryption key and decryption key are unique and the computation of decryption from encryption is infeasible. Compared to symmetric encryption, the asymmetric encryption key can be made public \cite{DBLP:series/isc/DelfsK07}. However the decryption key is still kept a secret. Because anyone can use the encryption key it is called the “public” key. For a public key it is useful to have two different key spaces since the public key and the private key are shaped differently \cite{DBLP:series/isc/DelfsK07}.
 
 \textbf{RSA}
 RSA is named after its inventors Ron Rivest, Adi Shamir and Len Adleman. RSA was the first public-key cryptosystem and is still one of the most important \cite{DBLP:series/isc/DelfsK07}. The most important thing to note about RSA is that it is an asymmetric encryption method and so therefore has a public key and a private key. Both keys however are mathematically linked. The public key is known to everyone and is used to decrypt messages. On the other hand the private key is used to encrypt messages. The general idea behind the encryption of RSA is that the factors of the two generated messages cannot be recovered from $n$. RSA will generate two different random numbers which are odd prime numbers. The product is then taken from these values. A new value (e) is then introduced which is a prime number relative to $n$. The pair (n, e) is then the public key. The decryption is then computed with ne $\equiv$ 1 mod (n). (n,d) is then used as the private key. This is just one of the other possible methods of encryption available.
@@ -262,7 +262,7 @@ Therefore we can say for the sets $X$ and $Y$:
 \end{center}
 A set can have nothing within inside it (no elements) which is referred as the empty set. The empty set is denoted as the symbol $\emptyset$ or $\{\}$. There are four operations that can be applied to sets that can produce new sets.
 
-\subsection{The four basic operations}
+\subsection{The Four Basic Operations}
 \label{sec:fourbasop}
 
 The \emph{intersection} operation takes two sets and finds the element that occur in both set $X$ and set $Y$, $X \cap Y$. Therefore intersection is:
@@ -492,12 +492,12 @@ R_{1} = C
 
 What is SAT? (brief introduction to the topic (defining definitions and how to build a framework to solve a SAT problem)only to be completed when the main body is finished).
 
-\subsection{Syntax and semantics for propositional logic}
+\subsection{Syntax and Semantics for Propositional Logic}
 \label{sec:syntaxsem}
 
-A propositional variable is the starting point of propositional logic and is a alphabetic symbol that represents a object or number which is subject to change or is not known. We will refer to a set of variables as \textit{\textbf{VA}}. Let $a$ stand for all variables, $a$ $\in$ \textit{\textbf{VA}}. The symbol $\top$ will be used to show that a formula is always true and $\bot$ for when a formula is always false. The symbol $\neg$ will be used to show the negation of an object. The binary symbols $\land$ (conjunction), $\lor$ (disjunction), $\Rightarrow$ (implies) and $\equiv$ (equivalence) will be used throughout this paper and are known as \textit{functors} (see \cite{Marek2009Introduction}). A propositional formula is defined as a set of strings over the set $Var$ such that \{\textit{Form} : $a, \neg, \top, \bot, \land, \lor, \Rightarrow, \equiv \in Form$\}. A literal is a variable that is either positive or negative (denoted by the negation symbol) which will be referred to as \textbf{\textit{LIT}} =  \textit{\textbf{VA}} $\cup \{ \bar{v} : v \in$ \textbf{\textit{VA}}\}, for a set of literals. A clause is a formula in the form $l_1 \lor$ ... $\lor l_k$, where each $l_j$, 1 $\le$ \textit{j} $\le$ \textit{k} is a \textit{literal} (see\cite{Marek2009Introduction}). We will refer to a set of clauses as \textbf{\textit{CL}} := \{C $\subseteq$ \textbf{\textit{LIT}} C $\cap \bar{C} = \emptyset$\}. A set of clause-set's contains \textbf{\textit{CL}} which we will refer as \textbf{\textit{CLS}} := \{$F \subseteq$ \textit{\textbf{CL}}\}.
+A propositional variable is the starting point of propositional logic and is a alphabetic symbol that represents a object or number which is subject to change or is not known. We will refer to a set of variables as \textit{\textbf{VA}}. Let $a$ stand for all variables, $a$ $\in$ \textit{\textbf{VA}}. The symbol $\top$ will be used to show that a formula is always true and $\bot$ for when a formula is always false. The symbol $\neg$ will be used to show the negation of an object. The binary symbols $\land$ (conjunction), $\lor$ (disjunction), $\Rightarrow$ (implies) and $\equiv$ (equivalence) will be used throughout this paper and are known as \textit{functors} (see \cite{Marek2009Introduction}). A propositional formula is defined as a set of strings over the set $Var$ such that \{\textit{Form} : $a, \neg, \top, \bot, \land, \lor, \Rightarrow, \equiv \in Form$\}. A literal is a variable that is either positive or negative (denoted by the negation symbol) which will be referred to as \textbf{\textit{LIT}} =  \textit{\textbf{VA}} $\cup \{ \bar{v} : v \in$ \textbf{\textit{VA}}\}, for a set of literals. A clause is a formula in the form $l_1 \lor$ ... $\lor l_k$, where each $l_j$, 1 $\le$ \textit{j} $\le$ \textit{k} is a \textit{literal} (see\cite{Marek2009Introduction}). We will refer to a set of clauses as \textbf{\textit{CL}} := \{C $\subseteq$ \textbf{\textit{LIT}} C $\cap \bar{C} = \emptyset$\}. A set of clause-set's contains \textbf{\textit{CL}} which we will refer as \textbf{\textit{CSL}} := \{$F \subseteq$ \textit{\textbf{CL}}\}.
 
-\subsection{Boolean logic}
+\subsection{Boolean Logic}
 \label{sec:bool}
 
 Boolean logic is referred to as two valued logic. This is because two values are used to determine if something is true of false. \emph{True} is represented as $1$ and \emph{false} is $0$. The structure of Boolean logic is:
@@ -617,10 +617,10 @@ The \emph{Distributive law} shows a valid replacement of variables, as
 \end{displaymath}
 
 
-\subsection{Converting CNF to clause set logic}
+\subsection{Converting CNF to Clause Set Logic}
 \label{subsec:ConvertCNF}
 
-In order to transform a CNF $\rightarrow$ CLS $\rightarrow$ we must use 3 rules to make sure we do not lose anything important. These laws will state that when we acquire the transformed CNF, that it will be equivalent to the CNF at the start.
+In order to transform a CNF into \textbf{CSL} we must use 3 rules to make sure we do not lose anything important. These laws will state that when we acquire the transformed CNF, that it will be equivalent to the CNF at the start.
 The \emph{Commutative law} dictates that when you swap the positions of the variables they are still the same. For example:
 
 \begin{displaymath}
@@ -636,7 +636,7 @@ A \lor (B \lor C) \Leftrightarrow (B \lor A) \lor C
 \begin{displaymath}
 (A \lor A) \Leftrightarrow A
 \end{displaymath}
-To represent a CNF in a set clause, each clause from the CNF is separated and we look at the set by itself out of context of the other clauses so that, \{\textbf{\textit{CL}} $\in$ \textbf{\textit{CNF}}\}. Each set will remove all duplications of the literal due to the rules of simplification. An example of this would be if we take a given CNF and transform it into a \textbf{\textit{CLS}}:
+To represent a CNF in a set clause, each clause from the CNF is separated and we look at the set by itself out of context of the other clauses so that, \{\textbf{\textit{CL}} $\in$ \textbf{\textit{CNF}}\}. Each set will remove all duplications of the literal due to the rules of simplification. An example of this would be if we take a given CNF and transform it into a \textbf{\textit{CSL}}:
 
 \begin{displaymath}
 G:= (A \lor B \lor B) \land (C \lor D \lor \neg D)
@@ -654,7 +654,7 @@ We can now take the set of literals and transform it back into a CNF formula fol
 As a result we have produced a new CNF. By using this method we prove a formulas satisfiability which is proven by partial assignment.
 
 
-\subsection{Example of a formula being satisfiable}
+\subsection{Example of a Formula being Satisfiable}
 \label{subsec:ExampleFormSAT}
 
 \begin{enumerate}
@@ -698,7 +698,7 @@ Using the basic binary functor \emph{disjunction} (see Figure 4.2.3) we can now 
 
 In this section we will look at how to derive a CNF that represents a given block cipher. Additionally we will look at topics that are of concern when deriving a CNF formula, such as length and security
 
-\section{Block ciphers of different lengths}
+\section{Block Ciphers of Different Lengths}
 \label{sec:Blockcipherdiff}
 
 As previously declared (see section \ref{cha:BCipher}), block ciphers length of a message will be equal to the cipher text that is output using the formula 
@@ -709,7 +709,7 @@ However if such a case was to arise where the plain text is smaller or greater t
 
 An alternative block cipher encryption would be if the plain text contains less bits than the cipher text (P $\textgreater$ C). This will essentially mean that random useless data is added onto the cipher text. As a result of this, in theory, the cipher text is securer in terms of plain text attacking. This is due to the user having to use up more time to try and find meaning to the random useless bits therefore taking more time to crack.
 
-\section{Interpreting a block cipher as a relation}
+\section{Interpreting a Block Cipher as a Relation}
 \label{sec:ExampleBlock}
 
 \begin{displaymath}
@@ -743,7 +743,7 @@ $b(P,K,C) = 1 \Leftrightarrow b(P,K) = C$
 
 
 
-\section{Example of block cipher via SAT}
+\section{Example of Block Cipher via SAT}
 \label{sec:examplebcsat}
 
 If we were to consider a block cipher that had one key bits for both the key, Plain text and Cipher text then it is easy to understand the fundamentals of how the SAT computation can be done in a bigger picture. If we start with a basic example where each variable has a length of 1, then:
@@ -808,12 +808,12 @@ The CNF clauses for the table constructed with an output would be:
 This means we have constructed a CNF out of using the values from P, K, C via the use of SAT.
 
 
-\section{Characteristics and properties of block ciphers}
+\section{Characteristics and Properties of Block Ciphers}
 \label{sec:CharpropBC}
 
 In this section we will look at the unique characteristics of block ciphers in terms of their security. The security aspect of block ciphers will also mean an in depth look at the characteristics of the keys which are used in the encryption. 
 
-\subsection{Security of block ciphers}
+\subsection{Security of Block Ciphers}
 \label{subsec:SecurityBC}
 
 The security of an encryption is determined by its key. Specifically the more key iterations a encryption has, the more secure/ harder it will be to break. A encryption with only one key will encrypt a plain text once. This is less effective in terms of security compared to a plain text that uses more keys. This is due to the fact that the randomness of the cipher text increases.
@@ -837,7 +837,7 @@ is suitable for a given key K. Therefore we may want to locate a key K that is i
 
 
 
-\subsection{Strong property of keys}
+\subsection{Strong Property of Keys}
 \label{subsec:StrongKeys}
 
 There are basic properties given with keys to show that keys will always map to different outputs. Therefore if we are given two different keys, there exists a mapping for each key such that there will always be a different output (never both mapping to the same output). In other words, encryption key 1 (E$_{K1}$) is not equal to encryption key 2 (E$_{K2}$) in terms of mapping to the same cipher text (C). We will refer to this as a \emph{strong property}.  
@@ -1002,7 +1002,7 @@ Git is a program that allows a user to push pull and fork repository's and mainl
 
 (To be completed at the end. Refer to the aims of the project to show what has been attained during the project. For example an understanding of cryptography.)
 
-\section{Time line}
+\section{Time Line}
 \label{sec:TimeLine}
 
 \begin{center}
@@ -1043,7 +1043,7 @@ If I was to come down ill with some sort of illness or injury, this can potentia
 
 
 \textbf{Unambiguous Aims}
-In the initial document, the aims of the project are there for goals to be achieved as part of the success of the project. However some aims may not be achievable due to restricted resources or time.
+In the initial document, the aims of the project are therefore goals to be achieved as part of the success of the project. However some aims may not be achievable due to restricted resources or time.
 To make sure this does not happen, a review of the resources needed can be made to prevent this from happening, or some possible aims which are similar can be dropped and covered by other aims. More importantly this paper is a theoretical based, and therefore the aims are not permanently set, as a detailed look at a topic can open up opportunity's to study many different areas. If aims were set to be very specific about one topic then it is possible to over complicate the aims. This means that some aims may not be achievable as some theoretical proofs may not be determinable. As a result the aims must be slightly open, to allow the compensation of a new direction to be looked at.
 
 
