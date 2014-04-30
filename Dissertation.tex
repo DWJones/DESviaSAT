@@ -22,13 +22,27 @@
 \maketitle
 \tableofcontents
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \chapter{Introduction}
 \label{cha:Introduction}
 
 \section{Motivation}
 \label{cha:Motivation}
 
-Encrypting messages and decrypting messages has held an interest with me along with the secrecy surrounded by cryptology. The main thing that fascinates me about encryption is that pieces of text can be transformed into illegible messages and then back again with the use of a key. This project will be an accomplishment if i can outline existing documentation to build a theoretical framework to translate DES to SAT. This will make it easier to understand the concepts needed to break DES. Once I have this framework of knowledge, it will be able to guide me through the process of breaking DES with the use of experiments. I hope this will be useful to other researchers in closely related fields as they will be able to use some of the methods, explanations for their work or help explain to students DES and its link with SAT.
+Encrypting messages and decrypting messages has held an interest with me along with the secrecy surrounded by cryptology. The main thing that fascinates me about encryption is that pieces of text can be transformed into illegible messages and then back again with the use of a key. This project will be an accomplishment if i can outline existing documentation to build a theoretical framework to translate the translation of DES to SAT. This will make it easier to understand the concepts needed to break DES. Once I have this framework of knowledge, it will be able to guide me through the process of breaking DES. I hope this will be useful to people with an interest in cryptography or other researchers in closely related fields as they will be able to use some of the methods and explanations for their work. Additionally this paper could help explain to students looking into DES and its connections with SAT.
 
 
 
@@ -51,7 +65,8 @@ The aims of the project:
 
 
 \section{Science engineering}
-\label{sec:sciEng}
+\label{sec:SciEng}
+
 The main aim of the project has already been declared, but there are additional objectives which must be taken into account when writing the research paper.
 \begin{enumerate}
 \item Learn and use the software \LaTeX \space to write the dissertation.
@@ -73,23 +88,53 @@ Other work such as Logical Cryptanalysis as a SAT Problem \cite{Fabio2000Logical
 There are other cryptanalysis techniques which include differential cryptanalysis. Differential cryptanalysis was the first method to break DES faster than the previous brute force method that the exhaustive search did. The method is based up having a device which can encrypt data with a hard-wired secret key, and we assume that we don't have the tools to `read' the key within a chip. What we then do, is to choose some blocks of data and to encrypt them with the device. The data analysis will then compute the key by analysing roughly $2^{47}$ chosen plain text bits \cite{Junod2013LASEC}. This reduced  the probability of success as we cut out a lot of computation compared to 2$^{56}$.
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 \chapter{Literature review}
 \label{cha:LitReview}
+
 A literature review is written by someone to view the critical points of current knowledge, methodology and theoretical findings in a specific area of interest. Literature reviews are taken from a specific view point need justifications when arguing the points of the author. In this case, it will be a literature review of the paper titled `Logical Cryptanalysis as a SAT Problem' by Fabio Massacci et al \cite{Fabio2000LogicalSAT}. The review will consist of analysing the findings in a condensed and summarised fashion. Additionally, a look into the relevance of the paper will be critiqued along with innovations in research that has occurred since the paper has been published. A literature review is of important relevance to this paper as there are some links made between this paper and paper by Massacci. These links are cited where needed in the paper between the link of block ciphers and DES in terms of their properties.  
 
 
 
 \section{Analysis of findings}
 \label{sec:AnalysisOF}
+
 %review the paper and gather meaningful data to discuss. Additiaonlly discuss what was not talked about (universal backdoor key)
 
 \section{Relevance of the paper}
 \label{sec:RelOfPaper}
+
 %outline the relevance of the paper in the subject area and how it has opened up ways of attacking DES. What work has been expanded because of this paper.
 
 \section{Progress since publication}
 \label{sec:ProgressSP}
+
 %What has happened in the subject area since the paper has been published? What is the relevance of that work? This section should flow straight from the previous section as it will have some links 
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 \chapter{Background}
@@ -100,6 +145,7 @@ The analytical background will first describe the terminology used throughout th
 
 \section{Terminology}
 \label{sec:Term}
+
 A description of the definitions to impose a level of abstraction.
 
 \paragraph{Cryptography}
@@ -147,7 +193,7 @@ An example of a permutation would be is that there is a total of 6 permutations 
 \end{center}
 
 
-We use the following \textbf{formal notation}:
+We use the following formal notation throughout the paper:
 \begin{description}
 \item[M] Message
 \item[P] Plain text
@@ -161,6 +207,7 @@ We use the following \textbf{formal notation}:
 
 \section{General Cryptography}
 \label{sec:GenCrypt}
+
 %give a better look into RSA and triple DES
 Cryptography is the study of encryption and decryption to keep data a secret \cite{DBLP:series/isc/DelfsK07}. It has been around for centuries with one of the first examples being the “Caesar cipher” which was used around 40BC. This is probably one of the more famous examples of encryption.
 Encryption is important because people have secrets and want to keep the information they are transmitting hidden from people who would manage to intercept the message. If we say for example “Bob” wants to send a message “x” to “Alice”. If this message is sent to Alice without any encryption and it is intercepted by say “Eve”, then "Eve" is able to read said message “x”, thus no longer making “x” a secret. However encryption can help keep “Bobs” message a secret from “Eve”. This is done by at the most basic level, applying an encryption method to the message to produce a cipher text. The cipher text can then be passed on to “Alice”. If the message “x” is intercepted by “Eve”, then the message will be incoherent to read. This is because the encryption will have changed the message on the Plain text into something new which no longer resembles the original message. Once “Alice” has the cipher text, she can now apply a decryption method to the cipher text to read the original message. It is important to note that “Alice” is able to decrypt the cipher text by using a key that both parties will have agreed on before the transmission of a message “x”. This in essence is how encryption and decryption is used.
@@ -202,7 +249,7 @@ A block cipher is made up of two algorithms which we will call E and D (Encrypti
 \end{figure}
 
 
-
+%better explanation needed (The description in the first paragraph of page 9 could be made clearer. What is an intervertebral function?)
 The reason block ciphers are useful is that it takes in $n$ inputs and outputs $n$. Block ciphers are built by iteration were they take in as an input a key K. The key K will then be expanded into $K_{1}, K_{2},..., K_{n}$. These are called \emph{round keys}. The cipher will use these round keys by encrypting the message a number of times. So the encryption would work by taking producing a new message with each computation of th message and a key $R: (K_{1}, M)$ respectively. This will produce a message ($m_{1}$) were it will go through the same process with a different key until all the round keys are computed. Once all the rounds are complete one is left with C.
 
 \section{Sets}
@@ -244,6 +291,16 @@ A \emph{relation} is a subset of the product of sets, which is written as $R \su
 
 
 
+
+
+
+
+
+
+
+
+
+
 \chapter{The Data Encryption Standard}
 \label{cha:DES}
 
@@ -251,6 +308,7 @@ The Data Encryption Standard  or DES was developed by the company IBM in 1977 an
 
 \section{Construction of DES}
 \label{sec:conDES}
+
 The basic algorithm to construct a DES is to use a block cipher which encrypts blocks of 64 bits (Plain text) into blocks of 64 bits (Cipher text) using a key with 56 bits (the key length is actually 64 bits but 8 of those bits are used for parity checking and is otherwise ignored by the algorithm) \cite{Fabio2000LogicalSAT}.
 
 
@@ -263,6 +321,7 @@ DES is constructed by taking in a 64 bit Plain text, mapping it to an encryption
 
 \subsection{Feistel Network}
 \label{FeistelNet}
+
 DES uses an algorithm to encrypt data which is called the Feistel network \cite{DBLP:books/sp/Buchmann02}. It works by using permutation, XOR functions (see \ref{Figure:4.2.3}) and round keys in order to encrypt messages. The Feistel network uses arbitrary functions $f_{1},...,f_{d}$ which maps:
 \begin{displaymath}
 FeistelNetwork: \{0,1\}^n \rightarrow \{0,1\}^n
@@ -413,6 +472,18 @@ R_{1} = C
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 \chapter{Propositional Logic}
 \label{cha:prelim}
 
@@ -465,6 +536,7 @@ $p$ & $q$ & $p \land q$ & $p \lor q$ & $p \Rightarrow q$ & $p \equiv q$ & $p \op
 \begin{center}
 \label{Figure:4.2.3}{Figure 4.2.3: Five binary functors.}
 \end{center}
+
 The \emph{Conjunction} functor ($\land$) takes two Bool elements from a set $\{0,1\}$ and will return true if the elements of both elements are $1$. If however either one of the two elements or both are $0$, then the Conjunction of the two elements will return $0$. The \emph{Disjunction} functor $(\lor)$ takes two Bool elements from a set $\{0,1\}$ and will return a true value if both elements are valued as $1$, or either one of the two elements are equal to $1$. If however neither of the two elements are equal to $1$, then the Disjunction will return $0$. The \emph{Implication} functor $(\Rightarrow)$ takes two Bool from a set $\{0,1\}$ and will return true if both elements are equal to $1$, both elements are equal to $0$ or the first element is $0$ and the second element is $1$, as this says that false implies true which is true. However the implication functor will return true if the elements assignments are for the first element $1$ and the second is $0$, as this implies that truth implies false which is false. \emph{Equivalence} functor takes two Bool elements from a set $\{0,1\}$ and will return true if the elements assignments are both either $1$ or $0$. However, if one of the two elements is $1$ while the other is $0$, then the equivelance of the two elements will evaluate to $0$.
 
 \subsection {Partial Assignment and Total Assignment}
@@ -485,6 +557,8 @@ This will give us $\top:= \emptyset, \text{ so now we can have } \top \in$ \text
 $\varphi$ is a satisfying assignment for F if $\varphi \: \ast = \top$. A clause set is satisfiable if there exists a partial assignment $\varphi$ which satisfies F, i.e., $\varphi \: \ast = \top$.
 
 \subsection{Example of Partial Assignment}
+\label{subsec:ExamplePA}
+
 $<> \in \textbf{\textit{PASS}}$ is an example of the empty partial assignment.
 $< v \rightarrow \epsilon > \text{where } v \in Var \land v \in \{0,1\}$. $v$ is assigned to $\epsilon$ which is within the \textbf{\textit{PASS}} where $v$ is also found as a member in the $Var$ and is either $0$ or $1$.
 
@@ -494,6 +568,8 @@ A \lor 0 \rightarrow 0, \: A \lor 1 \rightarrow 1, \: A \lor 2 \rightarrow 2
 $A \lor 0 \rightarrow 0 \text{ holds as }0 \text {is nothing }$. $A \lor 1 \rightarrow 1$ is dependant on $1$ and therefore does not matter what $A$ is.
 
 \section{Conjunctive Normal Form}
+\label{sec:CNF}
+
 Conjunctive normal form (CNF) is a formula that uses Boolean logic, which is a conjunction of disjunctive literals. In other words, CNF uses the functors $\land$ to connect clauses and $\lor$ to connect literals.
 To create a CNF we must start with the building blocks which are made up of variables. The set of $Var$ which we will call $a$ is a set of variables where $\mathbb{N} \subseteq Var$. As a result this will mean that we cannot get the number $0$ in our variables.
 An example of a CNF would be:
@@ -523,7 +599,7 @@ All propositional formulas can be transformed into an equivalent formula that is
 
 The \emph{Double negative elimination law} shows that the logical equivelance of an object is the double negation of itself, as
 \begin{displaymath}
- P \Leftrightarrow \neg \neg P
+P \Leftrightarrow \neg \neg P
 \end{displaymath}
 
 The \emph{De Morgan's laws} shows the equivalence of a negated set that is expanded into its own negated element, shown as
@@ -542,16 +618,21 @@ The \emph{Distributive law} shows a valid replacement of variables, as
 
 
 \subsection{Converting CNF to clause set logic}
+\label{subsec:ConvertCNF}
+
 In order to transform a CNF $\rightarrow$ CLS $\rightarrow$ we must use 3 rules to make sure we do not lose anything important. These laws will state that when we acquire the transformed CNF, that it will be equivalent to the CNF at the start.
 The \emph{Commutative law} dictates that when you swap the positions of the variables they are still the same. For example:
+
 \begin{displaymath}
 A \lor B \Leftrightarrow B \lor A
 \end{displaymath}
 The \emph{Associative law} associative law declares that it does not matter how many variables are grouped. For example:
+
 \begin{displaymath}
 A \lor (B \lor C) \Leftrightarrow (B \lor A) \lor C
 \end{displaymath}
 \emph{Idempotents law} states that a clause with the same variables is equivalent to the variable. For example:
+
 \begin{displaymath}
 (A \lor A) \Leftrightarrow A
 \end{displaymath}
@@ -560,13 +641,11 @@ To represent a CNF in a set clause, each clause from the CNF is separated and we
 \begin{displaymath}
 G:= (A \lor B \lor B) \land (C \lor D \lor \neg D)
 \end{displaymath}
-
 The propositional formula $G$ will be converted to a set by using the rules of simplification:
 
 \begin{displaymath}
  G := \{\{{{A,B}\} \land \{{C,D,\neg D}}\}\}
 \end{displaymath}
-
 We can now take the set of literals and transform it back into a CNF formula following the Commutative, Associative and Idempotents laws to get a new CNF:
 
 \begin{displaymath}
@@ -576,6 +655,7 @@ As a result we have produced a new CNF. By using this method we prove a formulas
 
 
 \subsection{Example of a formula being satisfiable}
+\label{subsec:ExampleFormSAT}
 
 \begin{enumerate}
 \item $f:= (a \lor b \lor \neg c)$
@@ -598,6 +678,18 @@ If we compute the formula $f$ through the newly assigned variables, the formula 
 f(\varphi) = (1 \lor 1 \lor 1)
 \end{displaymath}
 Using the basic binary functor \emph{disjunction} (see Figure 4.2.3) we can now see that the formula will be satisfiable as the whole formula will evaluate to $1$.
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -717,9 +809,13 @@ This means we have constructed a CNF out of using the values from P, K, C via th
 
 
 \section{Characteristics and properties of block ciphers}
+\label{sec:CharpropBC}
+
 In this section we will look at the unique characteristics of block ciphers in terms of their security. The security aspect of block ciphers will also mean an in depth look at the characteristics of the keys which are used in the encryption. 
 
 \subsection{Security of block ciphers}
+\label{subsec:SecurityBC}
+
 The security of an encryption is determined by its key. Specifically the more key iterations a encryption has, the more secure/ harder it will be to break. A encryption with only one key will encrypt a plain text once. This is less effective in terms of security compared to a plain text that uses more keys. This is due to the fact that the randomness of the cipher text increases.
 
 \emph{Weak keys} in cryptography are keys which when used with a plain text will result in a cipher text with specific properties. 
@@ -742,6 +838,8 @@ is suitable for a given key K. Therefore we may want to locate a key K that is i
 
 
 \subsection{Strong property of keys}
+\label{subsec:StrongKeys}
+
 There are basic properties given with keys to show that keys will always map to different outputs. Therefore if we are given two different keys, there exists a mapping for each key such that there will always be a different output (never both mapping to the same output). In other words, encryption key 1 (E$_{K1}$) is not equal to encryption key 2 (E$_{K2}$) in terms of mapping to the same cipher text (C). We will refer to this as a \emph{strong property}.  
 \begin{displaymath}
 E_{K1} \neq E_{K2} \rightarrow C
@@ -775,14 +873,14 @@ P & E$_{K1}$ & E$_{K2}$ & P $\oplus$ E$_{K1}$ & P $\oplus$ E$_{K2}$\\ \hline
 \end{figure}
 
 The output of P $\oplus$ E$_{K1}$ is equivalent to saying it is cipher text 1 (C$_1$) and P $\oplus$ E$_{K2}$ is equivalent to cipher text 2 (C$_2$). Therefore we have proven that the output C$_1$ $\neq$ C$_2$.
- As seen in figure 5.2, two different keys do not map to the same output. As a result this is a "Strong property" of keys which is desirable when looking at the security of a block cipher.
+As seen in figure 5.2, two different keys do not map to the same output. As a result this is a "Strong property" of keys which is desirable when looking at the security of a block cipher.
 
- A \emph{Duplicate key} is a key with the same identical property of another key. This property is deriving the same Cipher text. Given two keys and using the domain Plain text \{P\}* which denotes the set of all possible Plain texts, the key will map \{P\}* to the set of all possible Cipher texts \{C\}*.
- \begin{displaymath}
- \{P\}* \rightarrow \{C\}*
- \end{displaymath}
- The duplicate key is of such that has the identical mapping. The same mapping is therefore defined by two given tables that are both naturally ordered, if and only if each row in the first table matches the second and each row in the second table matches the first table.
- An example of a duplicate key would be given C$_{K1}$(P) which denotes the cipher text using the key K$_1$ from the domain P and C$_{K2}$(P) denotes the cipher text using the key K$_2$ from the domain P where domain P in this case is the same for each Cipher text.
+A \emph{Duplicate key} is a key with the same identical property of another key. This property is deriving the same Cipher text. Given two keys and using the domain Plain text \{P\}* which denotes the set of all possible Plain texts, the key will map \{P\}* to the set of all possible Cipher texts \{C\}*.
+\begin{displaymath}
+\{P\}* \rightarrow \{C\}*
+\end{displaymath}
+The duplicate key is of such that has the identical mapping. The same mapping is therefore defined by two given tables that are both naturally ordered, if and only if each row in the first table matches the second and each row in the second table matches the first table.
+An example of a duplicate key would be given C$_{K1}$(P) which denotes the cipher text using the key K$_1$ from the domain P and C$_{K2}$(P) denotes the cipher text using the key K$_2$ from the domain P where domain P in this case is the same for each Cipher text.
 
 
 \begin{figure}
@@ -824,8 +922,26 @@ C_{K1}(P) = C_{K2}(P)
 \end{displaymath}
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 \chapter{Translating DES to SAT}
 \label{cha:AppDESSAT}
+
+
+
+
+
 
 
 
@@ -841,8 +957,10 @@ C_{K1}(P) = C_{K2}(P)
 
 The OK-Library is a research platform on generalised satisfiability developed by Oliver Kullmann \cite{Oliver2013OKlibrary}. The OKlibrary provides a computer-algebra based system for specifications and prototyping.
 
+
 \section{OKlibrary}
 \label{sec:OKl}
+
 The library additionally generates a C++ library using modern C++.
 The OKlibrary will be a tool needed to break the DES, as it will be able to compute the satisfiability much faster compared to manually doing it. This is because the OKlibrary is an environment for attacking “intractable problems”. The aims of using the OKlibrary is to be able to understand first of all how to use such a program in order to attack the DES.
 For the research I will be using the software that has been produced DES translation. This will be available in the OKlibrary. A lot of the software that is to be produced will be done in the functional programming language Maxima computer algebra system. The Maxima computer language is used to initially implement algorithms and ideas within the OKlibrary.
@@ -850,24 +968,43 @@ For the research I will be using the software that has been produced DES transla
 The OKlibrary will be used to run DES algorithms in CNF form in order to try and break them. Only the Data Encryption Standard Directory Reference will be used as part of the project, as a lot of the other directories are irrelevant.
 
 
-
 \section{ \LaTeX}
 \label{sec:LaTeX}
+
 The program LaTeX will be used in order to produce a clear and formatted research paper. \LaTeX\space is a document preparation system, used for research papers and alike. It is generally the case that the longer the project is in say the application “Microsoft Word”, the harder it is to keep track of the different elements that get moved around and the formatting. \LaTeX\space gives the user control over the formatting of the document, which makes it easier for the user to maintain control over the project. \LaTeX\space is not strictly for research papers and can be used for other forms of publishing. The program \LaTeX\space is written in something called the \TeX\space macro language. Coding is required to use the \TeX\space macro language. However the coding is straight forward and easy allowing the majority of people to pick it up quickly.
+
 
 \section{Github}
 \label{sec:Git}
+
 Github is a file sharing hosting service which allows users to interact with open source projects. Github allows a user to make a repository which will store documents. Users can then see each others repository to view their work. The main feature of Github is the `push', `pull' and `fork' operations from a repository. Forking a repository will create a identical version of that users repository on your Github account.The person that is collaborating on the project can make changes to their copy and then push it back to the main repository. In doing so the original user can then see the changes that are made and then sync the documents to a new one. Github allows the user to see what has been deleted and what has been added. For the person collaborating on the project, they can now make pull requests to take a copy of the documents to change them.
 Git is a program that allows a user to push pull and fork repository's and mainly keep track of the files located on a users system. Git uses the command line bash to execute commands in relation to the git files.
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 \chapter{Evaluation}
 \label{cha:Eval}
 
 \section{Accomplishments and What has been learned}
+\label{sec:Accomplishemnts}
+
 (To be completed at the end. Refer to the aims of the project to show what has been attained during the project. For example an understanding of cryptography.)
 
 \section{Time line}
+\label{sec:TimeLine}
+
 \begin{center}
 \begin{tabular}{|c|p{5cm}|}
 \hline
@@ -890,9 +1027,11 @@ Before Easter interval & Dissertation outline\\ \hline
 \end{center}
 
 \subsection{Reflection of Time line}
+\label{subsec:Reflection}
 (Reflection section only to be complete at the end of the project. Specific aspects of the time line highlighted to show what really happened. The user should be kept interested in why particular things were not complete/ did not meet a deadline/ what went well and why. Evaluate each week if possible.)
 
 \section{Risk Analysis}
+\label{sec:RiskAnalysis}
 Risk analysis looks at what things can go wrong internally or externally that would cause the project to either not be complete or cause problems with the time-line thus causing a decrease in the projects quality.
 
 
@@ -915,12 +1054,18 @@ Human error can occur at any time and can happen to anyone. The results of this 
 Learning how a program works and how to fully make use of its operations takes time to learn and understand. Even after a long time spent, one may not fully understand it. As a result coming to terms with how to use some of the software outlines in the software application for example the OKlibrary could cause a major set back in both time and opportunity cost.
 
 \subsection{Review of Risk Analysis}
+\label{subsec:ReviewOfRA}
+
 (To be completed at the end. Review risks and how they had an impact on the aims of the project with relation to the time line.)
 
 \section{Further Work}
+\label{sec:FurtherWork}
+
 (To be completed at the end. Evaluates possible improvements that can be made. If there was something that was discovered but not looked into discuss it. What this work has opened doors to research into.)
 
 \section{Conclusion}
+\label{sec:Conclusion}
+
 (To be completed at the end. Stress the importance of the thesis statement, give the paper a sense of completeness, and
 leave a final impression on the reader. Do not introduce anything new that has not already been said.)
 
