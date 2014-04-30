@@ -166,7 +166,7 @@ Symmetric-key encryption schemes provide secure communication for a pair of comm
 RSA is named after its inventors Ron Rivest, Adi Shamir and Len Adleman. RSA was the first public-key cryptosystem and is still one of the most important \cite{DBLP:series/isc/DelfsK07}. The most important thing to note about RSA is that it is an asymmetric encryption method and so therefore has a public key and a private key. Both keys however are mathematically linked. The public key is known to everyone and is used to decrypt messages. On the other hand the private key is used to encrypt messages. The general idea behind the encryption of RSA is that the factors of the two generated messages cannot be recovered from $n$. RSA will generate two different random numbers which are odd prime numbers. The product is then taken from these values. A new value (e) is then introduced which is a prime number relative to $n$. The pair (n, e) is then the public key. The decryption is then computed with ne $\equiv$ 1 mod (n). (n,d) is then used as the private key. This is just one of the other possible methods of encryption available.
 
 \section{Block Ciphers}
-\label{cha:BCipher}
+\label{sec:BCipher}
 
 A block cipher is defined as a symmetric-key encryption scheme with
 \begin{displaymath}
@@ -585,10 +585,13 @@ Using the basic binary functor \emph{disjunction} (see Figure 4.2.3) we can now 
 
 \chapter{Direct translations of (toy) block ciphers to SAT}
 \label{cha:dirtrans}
+
 In this section we will look at how to derive a CNF that represents a given block cipher. Additionally we will look at topics that are of concern when deriving a CNF formula, such as length and security
 
 \section{Block ciphers of different lengths}
-As previously declared (see \ref{cha:BCipher}), block ciphers length of a message will be equal to the cipher text that is output using the formula 
+\label{sec:Blockcipherdiff}
+
+As previously declared (see section \ref{cha:BCipher}), block ciphers length of a message will be equal to the cipher text that is output using the formula 
 \begin{displaymath}
  M = C = \{0,1\}^{n}
 \end{displaymath}
@@ -605,7 +608,7 @@ encrypt_{b} (P,K) = C
 decrypt_{b} (C, K) = P
 \end{displaymath}
 From this formula notation we must consider the scenario were one is given two of the three parts. For example if we have C and P we must thus determine K. This is where we can apply SAT to make a logical connection from the binary values that are given within DES and form a relation via Boolean functions to determine a CNF.
-As stated before in chapter \ref{cha:prelim} Boolean satisfiability problem is a problem described in terms of Boolean variables, which are either true or false, depending on the assignments they are given within a problem. From this we must then consider that there are a set of inputs which are represented by bits and the output can then be output as bits. In this case the block cipher operation would be
+As stated before in chapter \ref{cha:prelim}, Boolean satisfiability problem is a problem described in terms of Boolean variables, which are either true or false, depending on the assignments they are given within a problem. From this we must then consider that there are a set of inputs which are represented by bits and the output can then be output as bits. In this case the block cipher operation would be
 
 \begin{displaymath}
 BlockCipher(P,K,C)
@@ -613,7 +616,7 @@ BlockCipher(P,K,C)
 This relation holds if and only if encrypt$_{b}$ (P,K) = C.
 As a result of this relation, we have a satisfiability problem.
 
-\section{Example of block cipher via SAT }
+
 If we were to consider a block cipher that had one key bits for both the key, Plain text and Cipher text then it is easy to understand the fundamentals of how the SAT computation can be done in a bigger picture. If we start with a basic example where each variable has a length of 1, then:
 
 \begin{displaymath}
