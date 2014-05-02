@@ -325,11 +325,12 @@ RSA is named after its inventors Ron Rivest, Adi Shamir and Len Adleman. RSA was
 \label{sec:BCipher}
 %explain this better with regards to this formula being the length of a block cipher
 
-A block cipher is defined as a symmetric-key encryption scheme with
+A block cipher is defined as a symmetric-key encryption scheme with the length of a message being equal to the cipher text. Later on we will look at unique cases where either the message or cipher text are of different lengths. The block ciphers will be made up of binary values that are 0 or 1 of which the length of the block cipher itself will be to the power of $n$. Therefore $M$'s and $C$'s length will be 
 \begin{displaymath}
- M = C = \{0,1\}^{n}
+M \in \{0,1\}^{n} | C \in \{0,1\}^{n}
 \end{displaymath}
-$n$ is the block length of the cipher \cite{DBLP:series/isc/DelfsK07}. Block ciphers are used to encrypt blocks of bits of a fixed length to a new different output \cite{DBLP:books/sp/Buchmann02}. For example if the input length of a block cipher is 8 bits, then the output block cipher will also be 8 bits long. A block cipher is referred to as a cryptosystem if its plain text and cipher text are of the same length.A block cipher will map an original Plain text into a cipher text with the use of permutation. Block ciphers are closely related to binary arithmetic in how to calculate the new values and current values of which will be shown later.
+Block ciphers are used to encrypt blocks of bits of a fixed length to a new different output \cite{DBLP:books/sp/Buchmann02}. For example if the input length of a block cipher is 8 bits, then the output block cipher will also be 8 bits long. A block cipher is referred to as a cryptosystem if its plain text and cipher text are of the same length.A block cipher will map an original Plain text into a cipher text with the use of permutation. Block ciphers are closely related to binary arithmetic in how to calculate the new values and current values of which will be shown later.
+Block ciphers are used to encrypt blocks of bits of a fixed length to a new different output \cite{DBLP:books/sp/Buchmann02}. For example if the input length of a block cipher is 8 bits, then the output block cipher will also be 8 bits long. A block cipher is referred to as a cryptosystem if its plain text and cipher text are of the same length.A block cipher will map an original Plain text into a cipher text with the use of permutation. Block ciphers are closely related to binary arithmetic in how to calculate the new values and current values of which will be shown later.
 A block cipher is made up of two algorithms which we will call E and D (Encryption and decryption algorithm). Both of these algorithms take in a key called K. Given a Plain text (P) the encryption will take in a key and map both these inputs to an output. This output is the Cipher text (C). This can be seen in Figure \ref*{fig:2.2.1}
 
 %Change the illustration from PT Block to P Block
@@ -802,7 +803,7 @@ In this section we will look at how to derive a CNF that represents a given bloc
 \section{Block Ciphers of Different Lengths}
 \label{sec:Blockcipherdiff}
 
-As previously declared (see section \ref{cha:BCipher}), block ciphers length of a message will be equal to the cipher text that is output using the formula 
+As previously declared (see section \ref{sec:BCipher}), block ciphers length of a message will be equal to the cipher text that is output using the formula 
 \begin{displaymath}
  M = C = \{0,1\}^{n}
 \end{displaymath}
@@ -813,12 +814,12 @@ An alternative block cipher encryption would be if the plain text contains less 
 \section{Interpreting a Block Cipher as a Relation}
 \label{sec:ExampleBlock}
 
+For combining the two areas, we will consider block ciphers which we will call b. As stated before, we have the three elements of P, C and K. This can be seen below as P, C and K are all present. The cipher text is obtained by the relation of a plain text with a key. The key can be of different value to the length of $n$ as in theory, increasing the iterations of K will strengthen the block cipher against cryptographic attacks.  
 \begin{displaymath}
 b: \{0,1\}^n \times \{0,1\}^k \rightarrow \{0,1\}^n
 \end{displaymath}
-XXX
 
-For combining the two areas, we will consider block ciphers which we will call b. As stated before, we have the three elements of P, C and K. We then must consider the main processes of these elements which is to encrypt and decrypt using the formulas
+We then must consider the main processes of these elements which is to encrypt and decrypt using the formulas
 \begin{displaymath}
 b (P,K) = C
 \end{displaymath}
