@@ -415,7 +415,7 @@ DES is constructed by taking in a 64 bit Plain text, mapping it to an encryption
 \subsection{Feistel Network}
 \label{FeistelNet}
 
-DES uses an algorithm to encrypt data which is called the Feistel network \cite{DBLP:books/sp/Buchmann02}. It works by using permutation, XOR functions (see \ref{Figure:4.2.3}) and round keys in order to encrypt messages. The Feistel network uses arbitrary functions $f_{1},...,f_{d}$ which maps:
+DES uses an algorithm to encrypt data which is called the Feistel network \cite{DBLP:books/sp/Buchmann02}. It works by using permutation, XOR functions (see \ref{Figure:5.2}) and round keys in order to encrypt messages. The Feistel network uses arbitrary functions $f_{1},...,f_{d}$ which maps:
 \begin{displaymath}
 FeistelNetwork: \{0,1\}^n \rightarrow \{0,1\}^n
 \end{displaymath}
@@ -798,48 +798,45 @@ Using the basic binary functor \emph{disjunction} (see Figure 4.2.3) we can now 
 \chapter{Direct translations of (toy) block ciphers to SAT}
 \label{cha:dirtrans}
 
-In this section we will look at how to derive a CNF that represents a given block cipher. Additionally we will look at topics that are of concern when deriving a CNF formula, such as length and security
+In this section we will look at how to derive a CNF that represents a given (toy) block cipher. Additionally we will look at topics that are of concern when deriving a CNF formula, such as length and security.
 
 \section{Block Ciphers of Different Lengths}
 \label{sec:Blockcipherdiff}
 
-As previously declared (see section \ref{sec:BCipher}), block ciphers length of a message will be equal to the cipher text that is output using the formula 
-\begin{displaymath}
- M = C = \{0,1\}^{n}
-\end{displaymath}
-However if such a case was to arise where the plain text is smaller or greater that the cipher text then this will cause complications. Therefore there are different properties and issues that must be looked at regarding the different lengths. First we look at where the plain text is greater than the cipher text (P $\textless$ C). This essentially means that our input is grater than our output. Practically this does not make sense as there will be a lose of data within the cipher text.  However an alternative view would be that error checking was in the plain text , so therefore they were parity bits. In this regard this arbitrary block cipher would be acceptable.
+As previously declared (see section \ref{sec:BCipher}), block ciphers length of a message will be equal to the cipher text that is output. However if such a case was to arise where the plain text is smaller or greater that the cipher text then this will cause complications. Therefore there are different properties and issues that must be looked at regarding the different lengths. First we look at where the plain text is greater than the cipher text ($P$ $\textless$ $C$). This essentially means that our input is grater than our output. Practically this does not make sense as there will be a lose of data within the cipher text.  However an alternative view would be that error checking was in the plain text , so therefore they were parity bits. In this regard this arbitrary block cipher would be acceptable.
 
-An alternative block cipher encryption would be if the plain text contains less bits than the cipher text (P $\textgreater$ C). This will essentially mean that random useless data is added onto the cipher text. As a result of this, in theory, the cipher text is securer in terms of plain text attacking. This is due to the user having to use up more time to try and find meaning to the random useless bits therefore taking more time to crack.
+An alternative block cipher encryption would be if the plain text contains less bits than the cipher text ($P$ $\textgreater$ $C$). This will essentially mean that random useless data is added onto the cipher text. As a result of this, in theory, the cipher text is securer in terms of plain text attacking. This is due to the user having to use up more time to try and find meaning to the random useless bits therefore taking more time to crack.
 
 \section{Interpreting a Block Cipher as a Relation}
 \label{sec:ExampleBlock}
 
-For combining the two areas, we will consider block ciphers which we will call b. As stated before, we have the three elements of P, C and K. This can be seen below as P, C and K are all present. The cipher text is obtained by the relation of a plain text with a key. The key can be of different value to the length of $n$ as in theory, increasing the iterations of K will strengthen the block cipher against cryptographic attacks.  
+We will consider block ciphers which we will call $b$. As stated before, we have the three elements of $P$, $C$ and $K$. This can be seen below as $P$, $C$ and $K$ are all present. The cipher text is obtained by the relation of a plain text with a key. The key can be of different value to the length of $n$ as in theory, increasing the iterations of $K$ will strengthen the block cipher against cryptographic attacks.  
 \begin{displaymath}
 b: \{0,1\}^n \times \{0,1\}^k \rightarrow \{0,1\}^n
 \end{displaymath}
-
 We then must consider the main processes of these elements which is to encrypt and decrypt using the formulas
 \begin{displaymath}
 b (P,K) = C
 \end{displaymath}
-XXX
+Using $b$ we can use a encryption method to obtain a cipher text. This is by combining both the Plain text and a Key together to obtain a Cipher text as long as the block cipher relation holds.  
 \begin{displaymath}
 b^{-1}(C, K) = P
 \end{displaymath}
-From this formula notation we must consider the scenario were one is given two of the three parts. For example if we have C and P we must thus determine K. This is where we can apply SAT to make a logical connection from the binary values that are given within DES and form a relation via Boolean functions to determine a CNF.
+To decrypt a cipher text we can use a intervertebral function (See \ref{sec:Term}) to obtain the original plain text. This is done by using the same process to encrypt backwards using the cipher text and the same key as before. 
+ 
+In order to make the connection from the relation of block ciphers to logic we must consider the scenario were one is given two of the three parts. For example if we have $C$ and $P$ we must thus determine $K$. This is where we can apply SAT to make a logical connection from the binary values that are given within a given block cipher and form a relation via Boolean functions to determine a CNF.
 As stated before in chapter \ref{cha:prelim}, Boolean satisfiability problem is a problem described in terms of Boolean variables, which are either true or false, depending on the assignments they are given within a problem. From this we must then consider that there are a set of inputs which are represented by bits and the output can then be output as bits. In this case the block cipher operation would be
 
 \begin{displaymath}
 b(P,K,C)
 \end{displaymath}
-This relation holds if and only if encrypt$_{b}$ (P,K) = C.
-As a result of this relation, we have a satisfiability problem. XXX
+This relation holds if and only if $b$: ($P$,$K$) = $C$. As a result of this relation, we have a satisfiability problem. This therefore means we can attempt to break the block cipher. This can be done by evaluating the elements of the block cipher and mapping the block cipher relation to either a 0 or a 1 for if they hold. This is demonstrated below by the total block cipher being mapped to the binary digit 0 or 1. 
 
 \begin{displaymath}
 b:  \{0,1\}^n \times \{0,1\}^k \times \{0,1\}^n \rightarrow \{0,1\}
 \end{displaymath}
-XXX (if it is equal to one then the result is equal to us deriving the cipher text)
+
+(if it is equal to one then the result is equal to us deriving the cipher text)
 
 $b(P,K,C) = 1 \Leftrightarrow b(P,K) = C$
 
@@ -848,18 +845,15 @@ $b(P,K,C) = 1 \Leftrightarrow b(P,K) = C$
 \section{Example of Block Cipher via SAT}
 \label{sec:examplebcsat}
 
-If we were to consider a block cipher that had one key bits for both the key, Plain text and Cipher text then it is easy to understand the fundamentals of how the SAT computation can be done in a bigger picture. If we start with a basic example where each variable has a length of 1, then:
+If we were to consider a block cipher that had one key bits for both the Plain text, key and Cipher text then it is easy to understand the fundamentals of how the SAT computation can be done in a bigger picture. If we start with a basic example where each variable has a length of 1, then:
 
 %review the math below
 \begin{displaymath}
-N: (P, C) = 1
+P, K, C = 1
 \end{displaymath}
+If we were then to encrypt a message using the formula as stated before then
 \begin{displaymath}
-Key = 1
-\end{displaymath}
-Then if we were then to encrypt a message using the formula as stated before then
-\begin{displaymath}
-BlockCipher: \{0,1\}^{1} \times \{0,1\}^1 \rightarrow \{0,1\}^1
+b: \{0,1\}^{1} \times \{0,1\}^1 \rightarrow \{0,1\}^1
 \end{displaymath}
 This can be shown via a truth table to show the Boolean output for if the three variables are all true. With this truth table we have 2 variables. This means our output in the cipher will be 2$^{n}$ which in this case is 4.
 
@@ -887,7 +881,7 @@ Plain text & Key & Cipher\\ \hline
 1 & 1 & 1\\ \hline
 \end{tabular}
 \end{center}
-From this table we can now form a relation between the satisfiability of the C, K and P.
+From this table we can now form a relation between the satisfiability of C, K and P.
 
 %Label this table
 \begin{center}
@@ -904,18 +898,18 @@ Plain text & Key & Cipher & Output\\ \hline
 1 & 1 & 1 & 1\\ \hline
 \end{tabular}
 \end{center}
-We find the output by taking each variable {P,K,C} = {P$_{1}$, K$_{1}$, C$_{1}$}. If we take the first row we can see the variables are {0,0,0}. We then use this and look at the previous table to see if the same three values appear. The set {0,0,0} appears on the first line, so therefore the output will be one. However if the set does not appear then we represent the output as a 0. Once the table is completed one can start to construct CNF statements.
-The CNF clauses for the table constructed with an output would be:
+We find the output by taking each variable {$P$, $K$, $C$} = {$P_{1}$, $K_{1}$, $C_{1}$}. If we take the first row we can see the variables are \{0,0,0\}. We then use this and look at the previous table to see if the same three values appear. The set \{0,0,0\} appears on the first line, so therefore the output will be 1. However if the set does not appear then we represent the output as a 0. Once the table is completed one can start to construct CNF statements.
+The CNF clauses for the table constructed with an output will be:
 \begin{displaymath}
 (P_{1} \lor K_{1} \lor \neg C_{1}) \land (\neg P_{1} \lor K_{1} \lor C_{1}) \land (P_{1} \lor \neg K_{1} \lor \neg C_{1}) \land (\neg P_{1} \lor \neg K_{1} \lor C_{1})
 \end{displaymath}
-This means we have constructed a CNF out of using the values from P, K, C via the use of SAT.
+This means we have constructed a CNF out of using the values from $P$, $K$, $C$ via the use of SAT.
 
 
-\section{Characteristics and Properties of Block Ciphers}
+\section{Properties of Block Ciphers}
 \label{sec:CharpropBC}
 
-In this section we will look at the unique characteristics of block ciphers in terms of their security. The security aspect of block ciphers will also mean an in depth look at the characteristics of the keys which are used in the encryption. 
+In this section we will look at the unique properties and characteristics of block ciphers in terms of their security. The security aspect of block ciphers will also mean an in depth look at the characteristics of the keys which are used in the encryption. 
 
 \subsection{Security of Block Ciphers}
 \label{subsec:SecurityBC}
