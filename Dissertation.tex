@@ -826,19 +826,18 @@ To decrypt a cipher text we can use a intervertebral function (See \ref{sec:Term
  
 In order to make the connection from the relation of block ciphers to logic we must consider the scenario were one is given two of the three parts. For example if we have $C$ and $P$ we must thus determine $K$. This is where we can apply SAT to make a logical connection from the binary values that are given within a given block cipher and form a relation via Boolean functions to determine a CNF.
 As stated before in chapter \ref{cha:prelim}, Boolean satisfiability problem is a problem described in terms of Boolean variables, which are either true or false, depending on the assignments they are given within a problem. From this we must then consider that there are a set of inputs which are represented by bits and the output can then be output as bits. In this case the block cipher operation would be
-
 \begin{displaymath}
 b(P,K,C)
 \end{displaymath}
 This relation holds if and only if $b$: ($P$,$K$) = $C$. As a result of this relation, we have a satisfiability problem. This therefore means we can attempt to break the block cipher. This can be done by evaluating the elements of the block cipher and mapping the block cipher relation to either a 0 or a 1 for if they hold. This is demonstrated below by the total block cipher being mapped to the binary digit 0 or 1. 
-
 \begin{displaymath}
 b:  \{0,1\}^n \times \{0,1\}^k \times \{0,1\}^n \rightarrow \{0,1\}
 \end{displaymath}
+The block cipher will be considered broken if we can obtain a CNF the evaluates to 1. As a result this will mean that the block cipher will be equivalent to deriving the Cipher text. 
+\begin{displaymath}
+b(P,K,C) = 1 \Leftrightarrow b(P,K) = C
+\end{displaymath}
 
-(if it is equal to one then the result is equal to us deriving the cipher text)
-
-$b(P,K,C) = 1 \Leftrightarrow b(P,K) = C$
 
 
 
@@ -1019,22 +1018,6 @@ By our previous hypothesis, if we take each row from table 5.1 and table 5.2 the
 C_{K1}(P) = C_{K2}(P)
 \end{displaymath}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-\chapter{Translating DES to SAT}
-\label{cha:AppDESSAT}
 
 
 
