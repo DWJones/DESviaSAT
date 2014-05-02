@@ -197,10 +197,24 @@ There are other cryptanalysis techniques which include differential cryptanalysi
 
 A literature review is written by someone to view the critical points of current knowledge, methodology and theoretical findings in a specific area of interest. Literature reviews are taken from a specific view point need justifications when arguing the points of the author. In this case, it will be a literature review of the paper titled `Logical Cryptanalysis as a SAT Problem' by Fabio Massacci et al \cite{Fabio2000LogicalSAT}. The review will consist of analysing the findings in a condensed and summarised fashion. Additionally, a look into the relevance of the paper will be critiqued along with innovations in research that has occurred since the paper has been published. A literature review is of important relevance to this paper as there are some links made between this paper and paper by Massacci. These links are cited where needed in the paper between the link of block ciphers and DES in terms of their properties.  
 
+\section{Structure of the Paper}
+\label{sec:StrucPaper}
+
+The paper `Logical Cryptanalysis as a SAT Problem' looks into encoding cryptographic algorithms properties as a SAT problem. In layman's terms this means representing a encryption process in propositional logic, and then evaluating different properties of the said encryption. These properties may be desirable or undesirable depending on what they are. With these encoded encryptions the paper will then attempt to solve these SAT problems with the use of automated SAT solvers that have some AI conductive reasoning to obtain its results. It outlines at the very start that `finding a model for a formula encoding an algorithm is equivalent to finding a key with a cryptanalytic attack' \cite{Fabio2000LogicalSAT}. The paper will additionally look at other properties of interest such as algebraic closure or cipher integrity. These issues are in regards to the security of the encryption and how easy it is to break. In order for the encryption to keep its integrity, the cipher text should not represent the plain text in a way that makes it easy for and attacker to be able to decipher the cipher text with ease. The main focus point of the paper is to look at DES as a function and then try to encode its properties. Furthermore three `Sat provers' are used to test the encoding of DES. These `Sat provers' are:
+
+\begin{itemize}
+  \item rel-SAT by Bayardo and Schrag
+  \item SATO by Zhang
+  \item TABLEAU by Crawford and Auton
+\end{itemize}
+Each Sat prover are tested individually using the same encoded DES. Each Sat prover will display different results, of which the results will be analysed to see the reasoning behind the performances. At the end of the paper there is a conclusion of the findings and a review of further work that can be done. 
+
+The introduction eases the reader into the basic ideas and ideology of what cryptographic algorithms are, what they are used for and the security aspects of them. Additionally the introduction gives a brief summery of what th SAT provers are and how they differ from one another in terms of their computation. It should be noted that the paper talks about technological and economical issues that can limit the results validity. These technological issues are due to the hardware of machines needed to carry out the computation with the use of a SAT prover could be better and the results of different SAT provers may differ purely based on how they use the machines hardware. For example if one SAT prover optimizes a machines full computation capabilities compared to one that doesnt, then the SAT prover that does not optimize its computation capabilities will not give a true representation of its results when compared against a SAT prover that does. 
 
 
 \section{Analysis of Findings}
 \label{sec:AnalysisOF}
+The paper proves that it is possible to encode the translation of ciphers in logic. Furthermore a number of different properties can be modelled. 
 
 %review the paper and gather meaningful data to discuss. Additiaonlly discuss what was not talked about (universal backdoor key)
 
@@ -211,7 +225,7 @@ A literature review is written by someone to view the critical points of current
 
 \section{Progress Since Publication}
 \label{sec:ProgressSP}
-
+The paper in its conclusion left some open problems such as finding a key in less than 56 hours using standard hardware and software. In theory this has been accomplished with innovation's in technology which can allow a user to break DES in less than 56 hours. Additionally advances in other areas such as distributed computing which makes use of many machines across a wide area network to compute relatively small parts of the attack, can allow for much faster breaking of DES. 
 %What has happened in the subject area since the paper has been published? What is the relevance of that work? This section should flow straight from the previous section as it will have some links 
 
 
@@ -803,7 +817,7 @@ In this section we will look at how to derive a CNF that represents a given (toy
 \section{Block Ciphers of Different Lengths}
 \label{sec:Blockcipherdiff}
 
-As previously declared (see section \ref{sec:BCipher}), block ciphers length of a message will be equal to the cipher text that is output. However if such a case was to arise where the plain text is smaller or greater that the cipher text then this will cause complications. Therefore there are different properties and issues that must be looked at regarding the different lengths. First we look at where the plain text is greater than the cipher text ($P$ $\textless$ $C$). This essentially means that our input is grater than our output. Practically this does not make sense as there will be a lose of data within the cipher text.  However an alternative view would be that error checking was in the plain text , so therefore they were parity bits. In this regard this arbitrary block cipher would be acceptable.
+As previously declared (see section \ref{sec:BCipher}), block ciphers length of a message will be equal to the cipher text that is output. However if such a case was to arise where the plain text is smaller or greater that the cipher text then this will cause complications. Therefore there are different properties and issues that must be looked at regarding the different lengths. First we look at where the plain text is greater than the cipher text ($P$ $\textless$ $C$). This essentially means that our input is grater than our output. Practically this does not make sense as there will be a lose of data within the cipher text.  However an alternative view would be that error checking was in the plain text, so therefore they were parity bits. In this regard this arbitrary block cipher would be acceptable.
 
 An alternative block cipher encryption would be if the plain text contains less bits than the cipher text ($P$ $\textgreater$ $C$). This will essentially mean that random useless data is added onto the cipher text. As a result of this, in theory, the cipher text is securer in terms of plain text attacking. This is due to the user having to use up more time to try and find meaning to the random useless bits therefore taking more time to crack.
 
