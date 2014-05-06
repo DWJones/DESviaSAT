@@ -15,7 +15,7 @@
 \DeclareMathOperator{\power}{\mathcal{P}}
 
 \begin{document}
-
+\thispagestyle{empty}
 \title{Understanding how to attack DES via SAT}
 \author{David William Jones}
 \date{May, 2014}
@@ -41,7 +41,7 @@ Swansea University
 
 
 \newpage
-\pagestyle{empty}
+\thispagestyle{empty}
 \noindent{\LARGE \textbf{Declaration}} \newline
 
 \noindent This work has not previously been accepted in substance for any degree and is not being currently submitted for any degree. \newline
@@ -133,48 +133,63 @@ Singed:
 \section{Motivation}
 \label{cha:Motivation}
 
-Encrypting messages and decrypting messages has held an interest with me along with the secrecy surrounded by cryptology. The main thing that fascinates me about encryption is that pieces of text can be transformed into illegible messages and then back again with the use of a key. This project will be an accomplishment if i can outline existing documentation to build a theoretical framework to translate the translation of DES to SAT. This will make it easier to understand the concepts needed to break DES. Once I have this framework of knowledge, it will be able to guide me through the process of breaking DES. I hope this will be useful to people with an interest in cryptography or other researchers in closely related fields as they will be able to use some of the methods and explanations for their work. Additionally this paper could help explain to students looking into DES and its connections with SAT.
+Encrypting messages and decrypting messages has held an interest with me along with the secrecy surrounded by cryptology. The main thing that fascinates me about encryption is that pieces of text can be transformed into illegible messages and then back again with the use of a key. Additionally, SAT is a research area that is of interest as it provides a way of solving complicated problems via the use of SAT solvers.  This project will be an accomplishment if I can outline existing documentation to build a theoretical framework to make the translation of Block ciphers to SAT. From this model of a Block cipher as a SAT problem, DES can then be modelled. This will make it easier to understand the concepts needed to break DES. Once I have this framework of knowledge, it will be able to guide me through the process of breaking DES. I hope this will be useful to people with an interest in cryptography or other researchers in closely related fields as they will be able to use some of the methods and explanations for their work. Additionally this paper could help explain to students looking into DES and its connections with SAT.
 
 
 
 \section{Aims of the Project}
 \label{cha:Aims}
 
-The project will be focused on constructing an understanding of the Data Encryption Standard (DES), where one is able to encrypt messages and decrypt a message via a key. The second part of the project is to study SAT to gain an understanding of the subject so it can then start to be linked into the attacking of DES. Additionally the DES should be applied and developed into a Conjunctive Normal Form.
-The aims of the project should be left open throughout the different stages of the project as this is a theoretical paper. Discoveries through the paper may open up other areas of interest that one could look deeper into these topics that arise.
+The project will be focused on constructing an understanding of the Data Encryption Standard (DES), where one is able to encrypt messages and decrypt a message via a key. To gain this understanding of DES, one must first look at Block ciphers which are the building blocks of DES. The second part of the project is to study SAT to gain an understanding of the subject so it can then start to be linked into the attacking of DES. The last stage is to translate DES into a computational problem via the use of SAT. Once we have this translation, one can evaluate and derive meaningful information to break DES. 
 
 The aims of the project:
 
 \begin{enumerate}
+\item Research and study Block Ciphers.
 \item Research and study the Data Encryption Standard.
 \item Understanding the fundamental basics of Satisfiability and Boolean functions.
 \item Understanding and document the existing translation of DES to SAT.
-\item To develop a Data Encryption Standard via Conjunctive Normal Form.
-\item Test the CNF's in a SAT solver and find methods to improve aspects of the computation.
-\item Show the improvement of the existing facilities with the use of experiments.
+\item To develop a (toy) Block cipher via Conjunctive Normal Form.
+\item Evaluate the properties of the (toy) Block cipher.
+\item Explore and explain the problems with translating DES to SAT.
 \end{enumerate}
+In order to achieve these aims one will have to start with the basic knowledge. Once one grasps the basics of block ciphers, understanding DES becomes a lot simpler. Additionally a basics of Satisfiability and Boolean functions are needed. Therefore once we understand the basics, one can move onto formulating a computational problem. This will be done by formulating a block cipher as a relation. Once we have this relation, values can be assigned via a mapping to each variable. To this techniques outlined in previous chapters will provide us a way of translating our formula into a CNF formula. This formula can then be evaluated to finding a key, thus breaking the Block cipher.
+
+The dissertation will be split up into different sections. Each section is aimed at a particular area of interest, relevant to attacking DES via SAT. Therefore the paper is split up as follows: 
+
+\begin{itemize}
+  \item Chapter 2: A literature review which is to asses relevant material in our area of interest. 
+  \item Chapter 3: Outlines background knowledge of the fundamentals and basic ideology involving encryption and sets.
+  \item Chapter 4: Introduces DES along with a demonstration of DES encrypting a message.
+  \item Chapter 5: Presents an introduction to propositional logic.
+  \item Chapter 6: Demonstrates and evaluates a translation of a (toy) Block cipher to SAT. Furthermore the evaluation goes into depth about how a DES translation is possible.
+  \item Chapter 7: Outlines the software that was used for the project, along with a look at a SAT solver that could be used to validate findings.
+  \item Chapter 8: Concludes all presented work along with further work that can be taken from the findings. 
+\end{itemize}
 
 
 \section{Science Engineering}
 \label{sec:SciEng}
 
-The main aim of the project has already been declared, but there are additional objectives which must be taken into account when writing the research paper.
+The main aim of the project has already been declared. However there are additional objectives which must be taken into account when writing a research paper.
 \begin{enumerate}
 \item Learn and use the software \LaTeX \space to write the dissertation.
 \item Install and understand how to use Git and Github, to keep track of the progress of the project with the supervisor.
 \end{enumerate}
-\LaTeX \space is a writing environment which gives the user more control when constructing a paper over more popular software such as Microsoft Word. A detailed analysis of the advantages of using such a software can be found in \ref{sec:LaTeX}.
-Github is a file sharing hosting service which allows one or more person to work on a project on their own machines. A detailed description of Github can be found in \ref{sec:Git}
+\LaTeX \space is a writing environment which gives the user more control when constructing a paper over more popular software such as Microsoft Word. A detailed analysis of the advantages of using such a software can be found in Section \ref{sec:LaTeX}.
+Github is a file sharing hosting service which allows one or more person to work on a project on their own machines. A detailed description of Github can be found in Section \ref{sec:Git}
 
 
 
 \section{Related Work}
 \label{cha:RWork}
 
-There have been some published papers which are similar to the topic area, but not many. A basic understanding and framework can be taken from these papers to develop a well designed structure to the projects work.
+There have been some published papers which are similar to the topic area, but not many when compared to other areas of research. The papers that have been published range back to roughly 1975. A basic understanding and framework can be taken from these papers to develop a well designed structure to the projects work. 
 
-The interaction between Propositional Satisfiability and Applications in Cryptography and Ramsey Problems \cite{Gwynne2010Interaction} is a recently published thesis that looks at a different encryption standard called Advanced Encryption Standard (AES). The paper first of all outlines and declares what Boolean functions are and SAT. The thesis paper goes into depth of how the AES works by giving a very detailed explanation along with examples of how it is runs. Then there is a translation of AES into SAT with the use of Conjunctive Normal Form (CNF). The framework within the thesis provided a translation of satisfiability theorems to be used in encryption. A lot of the work talks about breaking AES which is a successor of DES. However techniques used to break AES can be adopted and will be closely linked to DES.
-Other work such as Logical Cryptanalysis as a SAT Problem \cite{Fabio2000LogicalSAT} outlines DES which gives a great framework to use, covering everything step by step from the initial permutation to the generation of keys. A detailed analysis of this paper has been given in chapter \ref{cha:LitReview}. This gives one an in depth knowledge about some previous frameworks that have been developed and background knowledge about other cryptanalysis areas. %detialed analysis and in depth look of the paper is found in the next chapter   
+`Logical Cryptanalysis as a SAT Problem' \cite{Fabio2000LogicalSAT} outlines DES which gives a great framework to use, covering everything step by step from the initial permutation to the generation of keys. A detailed analysis of this paper has been given in Chapter \ref{cha:LitReview}. This gives one an in depth knowledge about some previous frameworks that have been developed and background knowledge about other cryptanalysis areas. 
+
+Other work such as `The interaction between Propositional Satisfiability and Applications in Cryptography and Ramsey Problems' \cite{Gwynne2010Interaction} is a recently published thesis that looks at a different encryption standard called Advanced Encryption Standard (AES). The paper first of all outlines and declares what Boolean functions are and SAT. The thesis paper goes into depth of how the AES works by giving a very detailed explanation along with examples of how it is runs. This is done by showing the representation of a CNF. Then there is a translation of AES into SAT with the use of Conjunctive Normal Form (CNF). Once the translation is made, the properties of AES are encoded in order to pass it through a SAT solver. Each part of AES is broken down into further smaller, more manageable parts, until the user is left with objects that can be formulated into CNF clauses. In this case of AES, they are the s-boxes. 
+The framework within the thesis provided a translation of satisfiability theorems to be used in encryption. A lot of the work talks about breaking AES which is a successor of DES. However techniques used to break AES can be adopted and will be closely linked to DES.
 
 There are other cryptanalysis techniques which include differential cryptanalysis. Differential cryptanalysis was the first method to break DES faster than the previous brute force method that the exhaustive search did. The method is based on having a device which can encrypt data with a hard-wired secret key, and we assume that we don't have the tools to `read' the key within a chip. What we then do, is to choose some blocks of data and to encrypt them with the device. The data analysis will then compute the key by analysing roughly $2^{47}$ chosen plain text bits \cite{Junod2013LASEC}. This reduced  the probability of success as we cut out a lot of computation compared to 2$^{56}$.
 
@@ -220,7 +235,8 @@ The paper proves that it is possible to encode the translation of ciphers in log
 
 \section{Relevance of the Paper}
 \label{sec:RelOfPaper}
-
+First paper to combine the two areas. Was the basis and lead onto further improvements by tacking the techniques and applying it to other encryption standards such as AES. 
+Provided a new approach at breaking DES. 
 %outline the relevance of the paper in the subject area and how it has opened up ways of attacking DES. What work has been expanded because of this paper.
 
 \section{Progress Since Publication}
@@ -427,9 +443,9 @@ DES: \{0,1\}^{64} \times \{0,1\}^{56} \rightarrow \{0,1\}^{64}
 DES is constructed by taking in a 64 bit Plain text, mapping it to an encryption key which is 56 bits long, which will give a 64 bit Cipher text.
 
 \subsection{Feistel Network}
-\label{FeistelNet}
+\label{subsec:FeistelNet}
 
-DES uses an algorithm to encrypt data which is called the Feistel network \cite{DBLP:books/sp/Buchmann02}. It works by using permutation, XOR functions (see \ref{Figure:5.2}) and round keys in order to encrypt messages. The Feistel network uses arbitrary functions $f_{1},...,f_{d}$ which maps:
+DES uses an algorithm to encrypt data which is called the Feistel network \cite{DBLP:books/sp/Buchmann02}. It works by using permutation, XOR functions (see Subsection \ref{Figure:5.2}) and round keys in order to encrypt messages. The Feistel network uses arbitrary functions $f_{1},...,f_{d}$ which maps:
 \begin{displaymath}
 FeistelNetwork: \{0,1\}^n \rightarrow \{0,1\}^n
 \end{displaymath}
@@ -471,8 +487,13 @@ M = ABCDEF0123456789
 \end{displaymath}
 We would rewrite this in a binary format to get our 64 bit plain text. In a table this would look like:
 
-%Label this table
-\begin{center}
+
+
+
+
+\begin{figure}[H]
+\centering
+\label{tab:BFormat}
 \begin{tabular}{ |c|c|c|c|c|c|c|c|c| }
 \hline
   {} & y$_{1}$ & y$_{2}$ & y$_{3}$ & y$_{4}$ & y$_{5}$ & y$_{6}$ & y$_{7}$ & y$_{8}$ \\ \hline
@@ -485,7 +506,8 @@ We would rewrite this in a binary format to get our 64 bit plain text. In a tabl
   x$_{7}$ & 0 & 1 & 1 & 0 & 0 & 1 & 1 & 1 \\ \hline
   x$_{8}$ & 1 & 0 & 0 & 0 & 1 & 0 & 0 & 1 \\ \hline
 \end{tabular}
-\end{center}
+\caption{Binary format of the message $M$.}
+\end{figure}
 
 The first 4 cells of each row indicate the binary digit value. As a result the letter A is defined as:
 
@@ -517,7 +539,9 @@ IP(_{p}) = p_{47}, p_{23}, p_{52},...,p_{3}
 \end{displaymath}
 
 %Label this table
-\begin{center}
+\begin{figure}[H]
+\centering
+\label{tab:Iperm}
 \begin{tabular}{ |c|c|c|c|c|c|c|c| }
 \hline
 1 & 1 & 0 & 0 & 1 & 1 & 0 & 0\\ \hline
@@ -529,60 +553,84 @@ IP(_{p}) = p_{47}, p_{23}, p_{52},...,p_{3}
 1 & 1 & 1 & 1 & 0 & 0 & 0 & 0\\ \hline
 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0\\ \hline
 \end{tabular}
-\end{center}
-The new mapping of IP gives us Table(a). We can then apply a key to this table to produce our first round table.
+\caption{Initial Permutation of $IP$.}
+\end{figure}
+As a result, we have now obtained a new $LeftInput$ and $RightInput$ which are as follows:
 
-%Label this table
+\begin{figure}[H]
+\centering
+\label{tab:LeftRight}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+\hline
+$LeftInput$ & 1100 & 1100 & 0000 & 0000 & 1100 & 1100 & 1111 & 1111\\ \hline
+$RightInput$ & 1111 & 0000 & 1010 & 1010 & 1111 & 0000 & 1010 & 1010\\ \hline
+\end{tabular}
+\caption{Table showing the left and right half's of $IP$.}
+\end{figure}
+
+The new mapping of IP gives us Figure 4.3 respectively. We can then apply a key to this table to produce our first round key.
+
+
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|} \hline
 K = & 0001 & 0011 & 0011 & 0100 & 0101 & 0111 & 0111 & 1001
 \\ \hline
 \end{tabular}
-
-\begin{center}
+\begin{figure}[H]
+\centering
+\label{tab:KeyExample}
 \begin{tabular}{|c|c|c|c|c|c|c|c|} \hline
 1001 & 1011 & 1011 & 1100 & 1101 & 1111 & 1111 & 0001\\ \hline
 \end{tabular}
-\end{center}
+\caption{A Key.}
+\end{figure}
 We then will compute the XOR as stated by the Feistel network. So as a result the R$_{0}$ will become R$_{1}$ which will be computed on the next round.
+This result will as
 
-This result will be as
 
-%Label this table
-\begin{center}
+\begin{figure}[H]
+\centering
+\label{tab:XORFN}
 \begin{tabular}{|c|c|c|c|c|c|c|c|} \hline
 C$_{0}$ & 1111 & 0000 & 1100 & 1100 & 1010 & 1010 & 1111\\ \hline
 D$_{0}$ & 0101 & 0101 & 0110 & 0110 & 0111 & 1000 & 1111\\ \hline
 C$_{1}$ & 1110 & 0001 & 1001 & 1001 & 0101 & 0101 & 1111\\ \hline
 D$_{1}$ & 1010 & 1010 & 1001 & 1001 & 1110 & 0011 & 1110\\ \hline
 \end{tabular}
-\end{center}
+\caption{Feistel network XOR function.}
+\end{figure}
 
-Using the key one would XOR both C$_{1}$ and D$_{1}$ and will get:
+Using the key, one would XOR both C$_{1}$ and D$_{1}$ of which will result in:
 
 %Label this table
-\begin{center}
+\begin{figure}[H]
+\centering
+\label{tab:Roundmapping}
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|}\hline
-K$_{1}$ & 0001 & 1011 & 0000 & 0010 & 1110 & 1111 & 1111 & 1100 & 0111 & 0000 & 0111 & 0010\\ \hline
+K$_{1}$ & 0101 & 1011 & 0000 & 0000 & 1110 & 1111 & 1111 & 1100 & 0111 & 0000 & 0111 & 0010\\ \hline
 \end{tabular}
-\end{center}
+\caption{The result of the XOR function }
+\end{figure}
 
 The next step is to use the key to obtain
 
-%Label this table
+\begin{figure}[H]
+\label{tab:XORR0K}
 \begin{tabular}{|c|c|c|c|c|}\hline
 $E(R_{0}) \oplus K_{1}$ & 0110 & 0001 & 0001 & 0111\\ \hline
 \end{tabular}
 
-\indent \begin{tabular}{|c|c||c|c|c|c|c|c|}\hline
-1011 & 1010 & 0000 & 1100 & 1001 & 0101 & 0010 & 0111\\ \hline
+\indent \begin{tabular}{|c|c|c|c|c|c|c|c|}\hline
+1011 & 1010 & 1000 & 0110 & 0110 & 0101 & 0010 & 0111\\ \hline
 \end{tabular}
+\caption{The result of mapping a key to $R_{0}$.}
+\end{figure}
 
-Therefore R$_{1}$ = 6117BA0CD27
+Therefore $R_{1}$ = 6117BA0CD27.
 
-If there was only one wound of function keys then R$_{1}$ would be the output which would make
+If there was only one round of function keys then R$_{1}$ would be the output which would make
 
 \begin{displaymath}
-R_{1} = C
+R_{1} = C.
 \end{displaymath}
 
 
@@ -604,13 +652,13 @@ R_{1} = C
 
 \section{SAT}
 \label{sec:SAT}
+SAT is an area of mathematical logic and computer science that looks at determining if there is a assignment of truth values (0 or 1) that will evaluate a given Boolean expression to true or false. The main areas were SAT is applied to automated reasoning, from cross network designs and databases to robotics. In order to understand what a Boolean expression is, we must first start with Propositional Logic. 
 
-What is SAT? (brief introduction to the topic (defining definitions and how to build a framework to solve a SAT problem)only to be completed when the main body is finished).
 
 \subsection{Syntax and Semantics for Propositional Logic}
 \label{sec:syntaxsem}
 
-A propositional variable is the starting point of propositional logic and is a alphabetic symbol that represents a object or number which is subject to change or is not known. We will refer to a set of variables as \textit{\textbf{VA}}. Let $a$ stand for all variables, $a$ $\in$ \textit{\textbf{VA}}. The symbol $\top$ will be used to show that a formula is always true and $\bot$ for when a formula is always false. The symbol $\neg$ will be used to show the negation of an object. The binary symbols $\land$ (conjunction), $\lor$ (disjunction), $\Rightarrow$ (implies) and $\equiv$ (equivalence) will be used throughout this paper and are known as \textit{functors} (see \cite{Marek2009Introduction}). A propositional formula is defined as a set of strings over the set $Var$ such that \{\textit{Form} : $a, \neg, \top, \bot, \land, \lor, \Rightarrow, \equiv \in Form$\}. A literal is a variable that is either positive or negative (denoted by the negation symbol) which will be referred to as \textbf{\textit{LIT}} =  \textit{\textbf{VA}} $\cup \{ \bar{v} : v \in$ \textbf{\textit{VA}}\}, for a set of literals. A clause is a formula in the form $l_1 \lor$ ... $\lor l_k$, where each $l_j$, 1 $\le$ \textit{j} $\le$ \textit{k} is a \textit{literal} (see\cite{Marek2009Introduction}). We will refer to a set of clauses as \textbf{\textit{CL}} := \{C $\subseteq$ \textbf{\textit{LIT}} C $\cap \bar{C} = \emptyset$\}. A set of clause-set's contains \textbf{\textit{CL}} which we will refer as \textbf{\textit{CSL}} := \{$F \subseteq$ \textit{\textbf{CL}}\}.
+A propositional variable is the starting point of propositional logic and is a alphabetic symbol that represents a object or number which is subject to change or is not known. We will refer to a set of variables as \textit{\textbf{VA}}. Let $a$ stand for all variables, $a$ $\in$ \textit{\textbf{VA}}. The symbol $\top$ will be used to show that a formula is always true and $\bot$ for when a formula is always false. The symbol $\neg$ will be used to show the negation of an object. The binary symbols $\land$ (conjunction), $\lor$ (disjunction), $\Rightarrow$ (implies) and $\equiv$ (equivalence) will be used throughout this paper and are known as \textit{functors} (see \cite{Marek2009Introduction}). A propositional formula is defined as a set of strings over the set $Var$ such that \{\textit{Form} : $a, \neg, \top, \bot, \land, \lor, \Rightarrow, \equiv$ $\in$ $Form$\}. A literal is a variable that is either positive or negative (denoted by the negation symbol) which will be referred to as \textbf{\textit{LIT}} =  \textit{\textbf{VA}} $\cup$  $\{ \bar{v} : v \in$ \textbf{\textit{VA}}\}, for a set of literals. A clause is a formula in the form $l_1 \lor$ ... $\lor l_k$, where each $l_j$, 1 $\le$ \textit{j} $\le$ \textit{k} is a \textit{literal} (see\cite{Marek2009Introduction}). We will refer to a set of clauses as \textbf{\textit{CL}} := \{C $\subseteq$ \textbf{\textit{LIT}} C $\cap$ $\bar{C} = \emptyset$\}. A set of clause-set's contains \textbf{\textit{CL}} which we will refer as \textbf{\textit{CSL}} := \{$F \subseteq$ \textit{\textbf{CL}}\}.
 
 \subsection{Boolean Logic}
 \label{sec:bool}
@@ -652,7 +700,13 @@ $p$ & $q$ & $p \land q$ & $p \lor q$ & $p \Rightarrow q$ & $p \equiv q$ & $p \op
 \label{Figure:5.2}{Figure 5.2: Five binary functors.}
 \end{center}
 
-The \emph{Conjunction} functor ($\land$) takes two Bool elements from a set $\{0,1\}$ and will return true if the elements of both elements are $1$. If however either one of the two elements or both are $0$, then the Conjunction of the two elements will return $0$. The \emph{Disjunction} functor $(\lor)$ takes two Bool elements from a set $\{0,1\}$ and will return a true value if both elements are valued as $1$, or either one of the two elements are equal to $1$. If however neither of the two elements are equal to $1$, then the Disjunction will return $0$. The \emph{Implication} functor $(\Rightarrow)$ takes two Bool from a set $\{0,1\}$ and will return true if both elements are equal to $1$, both elements are equal to $0$ or the first element is $0$ and the second element is $1$, as this says that false implies true which is true. However the implication functor will return true if the elements assignments are for the first element $1$ and the second is $0$, as this implies that truth implies false which is false. \emph{Equivalence} functor takes two Bool elements from a set $\{0,1\}$ and will return true if the elements assignments are both either $1$ or $0$. However, if one of the two elements is $1$ while the other is $0$, then the equivelance of the two elements will evaluate to $0$.
+The \emph{Conjunction} functor ($\land$) takes two Bool elements from a set $\{0,1\}$ and will return true if the elements of both elements are $1$. If however either one of the two elements or both are $0$, then the Conjunction of the two elements will return $0$.
+
+The \emph{Disjunction} functor $(\lor)$ takes two Bool elements from a set $\{0,1\}$ and will return a true value if both elements are valued as $1$, or either one of the two elements are equal to $1$. If however neither of the two elements are equal to $1$, then the Disjunction will return $0$.
+
+The \emph{Implication} functor $(\Rightarrow)$ takes two Bool from a set $\{0,1\}$ and will return true if both elements are equal to $1$, both elements are equal to $0$ or the first element is $0$ and the second element is $1$, as this says that false implies true which is true. However the implication functor will return true if the elements assignments are for the first element $1$ and the second is $0$, as this implies that truth implies false which is false.
+
+\emph{Equivalence} functor takes two Bool elements from a set $\{0,1\}$ and will return true if the elements assignments are both either $1$ or $0$. However, if one of the two elements is $1$ while the other is $0$, then the equivelance of the two elements will evaluate to $0$.
 
 \subsection {Partial Assignment and Total Assignment}
 \label{sec:pata}
@@ -680,7 +734,7 @@ $< v \rightarrow \epsilon > \text{where } v \in Var \land v \in \{0,1\}$. $v$ is
 \begin{displaymath}
 A \lor 0 \rightarrow 0, \: A \lor 1 \rightarrow 1, \: A \lor 2 \rightarrow 2
 \end{displaymath}
-$A \lor 0 \rightarrow 0 \text{ holds as }0 \text {is nothing }$. $A \lor 1 \rightarrow 1$ is dependant on $1$ and therefore does not matter what $A$ is.
+$A \lor 0 \rightarrow 0$ holds as $0$ is nothing. $A \lor 1 \rightarrow 1$ is dependant on $1$ and therefore does not matter what $A$ is.
 
 \section{Conjunctive Normal Form}
 \label{sec:CNF}
@@ -817,16 +871,19 @@ In this section we will look at how to derive a CNF that represents a given (toy
 \section{Block Ciphers of Different Lengths}
 \label{sec:Blockcipherdiff}
 
-As previously declared (see section \ref{sec:BCipher}), block ciphers length of a message will be equal to the cipher text that is output. However if such a case was to arise where the plain text is smaller or greater that the cipher text then this will cause complications. Therefore there are different properties and issues that must be looked at regarding the different lengths. First we look at where the plain text is greater than the cipher text ($P$ $\textless$ $C$). This essentially means that our input is grater than our output. Practically this does not make sense as there will be a lose of data within the cipher text.  However an alternative view would be that error checking was in the plain text, so therefore they were parity bits. In this regard this arbitrary block cipher would be acceptable.
+As previously declared (see Section \ref{sec:BCipher}), block ciphers length of a message will be equal to the cipher text that is output. However if such a case was to arise where the plain text is smaller or greater that the cipher text then this will cause complications. Therefore there are different properties and issues that must be looked at regarding the different lengths. First we look at where the plain text is greater than the cipher text ($P$ $\textless$ $C$). %re-do this equation and be defined in its defenition
 
-An alternative block cipher encryption would be if the plain text contains less bits than the cipher text ($P$ $\textgreater$ $C$). This will essentially mean that random useless data is added onto the cipher text. As a result of this, in theory, the cipher text is securer in terms of plain text attacking. This is due to the user having to use up more time to try and find meaning to the random useless bits therefore taking more time to crack.
+This essentially means that our input is grater than our output. Practically this does not make sense as there will be a lose of data within the cipher text.  However an alternative view would be that error checking was in the plain text, so therefore they were parity bits. In this regard this arbitrary block cipher would be acceptable.
+
+An alternative block cipher encryption would be if the plain text contains less bits than the cipher text ($P$ $\textgreater$ $C$). %re-do notation
+This will essentially mean that random useless data is added onto the cipher text. As a result of this, in theory, the cipher text is securer in terms of plain text attacking. This is due to the user having to use up more time to try and find meaning to the random useless bits therefore taking more time to crack.
 
 \section{Interpreting a Block Cipher as a Relation}
 \label{sec:ExampleBlock}
 
-We will consider block ciphers which we will call $b$. As stated before, we have the three elements of $P$, $C$ and $K$. This can be seen below as $P$, $C$ and $K$ are all present. The cipher text is obtained by the relation of a plain text with a key. The key can be of different value to the length of $n$ as in theory, increasing the iterations of $K$ will strengthen the block cipher against cryptographic attacks.  
+We will call block ciphers as $b$. As stated before in Section \ref{sec:BCipher}, we have the three elements of a block cipher which are $P$, $C$ and $K$. This can be seen below as $P$, $C$ and $K$ are all present. The cipher text is obtained by the relation of a plain text with a key. The key can be of different value to the length of $n$ as in theory, increasing the iterations of $K$ will strengthen the block cipher against cryptographic attacks.  
 \begin{displaymath}
-b: \{0,1\}^n \times \{0,1\}^k \rightarrow \{0,1\}^n
+b: \{0,1\}^n \times \{0,1\}^k \rightarrow \{0,1\}^n.
 \end{displaymath}
 We then must consider the main processes of these elements which is to encrypt and decrypt using the formulas
 \begin{displaymath}
@@ -841,11 +898,11 @@ To decrypt a cipher text we can use a intervertebral function (See \ref{sec:Term
 In order to make the connection from the relation of block ciphers to logic we must consider the scenario were one is given two of the three parts. For example if we have $C$ and $P$ we must thus determine $K$. This is where we can apply SAT to make a logical connection from the binary values that are given within a given block cipher and form a relation via Boolean functions to determine a CNF.
 As stated before in chapter \ref{cha:prelim}, Boolean satisfiability problem is a problem described in terms of Boolean variables, which are either true or false, depending on the assignments they are given within a problem. From this we must then consider that there are a set of inputs which are represented by bits and the output can then be output as bits. In this case the block cipher operation would be
 \begin{displaymath}
-b(P,K,C)
+b(P,K,C).
 \end{displaymath}
 This relation holds if and only if $b$: ($P$,$K$) = $C$. As a result of this relation, we have a satisfiability problem. This therefore means we can attempt to break the block cipher. This can be done by evaluating the elements of the block cipher and mapping the block cipher relation to either a 0 or a 1 for if they hold. This is demonstrated below by the total block cipher being mapped to the binary digit 0 or 1. 
 \begin{displaymath}
-b:  \{0,1\}^n \times \{0,1\}^k \times \{0,1\}^n \rightarrow \{0,1\}
+b:  \{0,1\}^n \times \{0,1\}^k \times \{0,1\}^n \rightarrow \{0,1\}.
 \end{displaymath}
 The block cipher will be considered broken if we can obtain a CNF the evaluates to 1. As a result this will mean that the block cipher will be equivalent to deriving the Cipher text. 
 \begin{displaymath}
@@ -862,11 +919,11 @@ If we were to consider a block cipher that had one key bits for both the Plain t
 
 %review the math below
 \begin{displaymath}
-P, K, C = 1
+P, K, C = 1.
 \end{displaymath}
 If we were then to encrypt a message using the formula as stated before then
 \begin{displaymath}
-b: \{0,1\}^{1} \times \{0,1\}^1 \rightarrow \{0,1\}^1
+b: \{0,1\}^{1} \times \{0,1\}^1 \rightarrow \{0,1\}^1.
 \end{displaymath}
 This can be shown via a truth table to show the Boolean output for if the three variables are all true. With this truth table we have 2 variables. This means our output in the cipher will be 2$^{n}$ which in this case is 4.
 
@@ -911,7 +968,7 @@ Plain text & Key & Cipher & Output\\ \hline
 1 & 1 & 1 & 1\\ \hline
 \end{tabular}
 \end{center}
-We find the output by taking each variable {$P$, $K$, $C$} = {$P_{1}$, $K_{1}$, $C_{1}$}. If we take the first row we can see the variables are \{0,0,0\}. We then use this and look at the previous table to see if the same three values appear. The set \{0,0,0\} appears on the first line, so therefore the output will be 1. However if the set does not appear then we represent the output as a 0. Once the table is completed one can start to construct CNF statements.
+We find the output by taking each variable {$P$, $K$, $C$} = {$P_{1}$, $K_{1}$, $C_{1}$}. If we take the first row we can see the values are 0,0,0. We then use this and look at the previous table to see if the same three values appear. The set \{0,0,0\} appears on the first line, so therefore the output will be 1. However if the set does not appear then we represent the output as a 0. Once the table is completed one can start to construct CNF statements.
 The CNF clauses for the table constructed with an output will be:
 \begin{displaymath}
 (P_{1} \lor K_{1} \lor \neg C_{1}) \land (\neg P_{1} \lor K_{1} \lor C_{1}) \land (P_{1} \lor \neg K_{1} \lor \neg C_{1}) \land (\neg P_{1} \lor \neg K_{1} \lor C_{1})
@@ -939,7 +996,7 @@ If it so happens that no weak key exists, we may want to know if a cipher is clo
 \begin{displaymath}
 E_{K2}(E_{K1})(P) = E_{K}(P)
 \end{displaymath} 
-is suitable for a given key K. Therefore we may want to locate a key K that is independent from the pain text (P) and only dependant on the other two keys (K1) and (K2). In the case of a closed cipher we cannot improve the security of the cipher by encrypting something twice with different keys. A different aspect of weak keys is that the cipher is more vulnerable to a brute force attack as discussed in section \ref{cha:RWork}. This is a result of two keys having the same out put thus reducing the search space for a brute force attack to half of the key bits which for DES would be 26 instead of 56. 
+is suitable for a given key K. Therefore we may want to locate a key K that is independent from the pain text (P) and only dependent on the other two keys (K1) and (K2). In the case of a closed cipher we cannot improve the security of the cipher by encrypting something twice with different keys. A different aspect of weak keys is that the cipher is more vulnerable to a brute force attack as discussed in section \ref{cha:RWork}. This is a result of two keys having the same out put thus reducing the search space for a brute force attack to half of the key bits which for DES would be 26 instead of 56. 
 
 
 
@@ -953,7 +1010,7 @@ is suitable for a given key K. Therefore we may want to locate a key K that is i
 
 There are basic properties given with keys to show that keys will always map to different outputs. Therefore if we are given two different keys, there exists a mapping for each key such that there will always be a different output (never both mapping to the same output). In other words, encryption key 1 (E$_{K1}$) is not equal to encryption key 2 (E$_{K2}$) in terms of mapping to the same cipher text (C). We will refer to this as a \emph{strong property}.  
 \begin{displaymath}
-E_{K1} \neq E_{K2} \rightarrow C
+E_{K1} \neq E_{K2} \Rightarrow C
 \end{displaymath}
 An example of this would be given a plain text of 1 bit in length that is assigned to binary value 1 and two keys each one bit in length where E$_{K1}$ is assigned to 0 and another key E$_{K2}$ is assigned 1. In the example given below, we are looking for two cipher texts not to be equal.
 A toy example of this strong property would be:
@@ -969,7 +1026,7 @@ P & E$_{K1}$ & E$_{K2}$ & C \\ \hline
 \end{tabular}
 \caption{Denoting the assignment of values}
 \end{figure}
-The Cipher text will be the result of using the XOR function (see \ref{Figure:4.2.3}) over the plain text and the E$_{Kn}$ to produce a cipher text C$_n$. The Strong property will hold if both cipher texts are not equal.
+The Cipher text will be the result of using the XOR function (see Figure \ref{Figure:5.2}) over the plain text and the E$_{Kn}$ to produce a cipher text C$_n$. The Strong property will hold if both cipher texts are not equal.
 
 \begin{figure}[H]
 \centering
@@ -1092,6 +1149,11 @@ Git is a program that allows a user to push pull and fork repository's and mainl
 \chapter{Evaluation}
 \label{cha:Eval}
 
+The aims of the project should be left open throughout the different stages of the project as this is a theoretical paper. Discoveries through the paper may open up other areas of interest that one could look deeper into these topics that arise.
+
+
+Test the CNF's in a SAT solver and find methods to improve aspects of the computation.
+Show the improvement of the existing facilities with the use of experiments.
 \section{Accomplishments and What has been learned}
 \label{sec:Accomplishemnts}
 
