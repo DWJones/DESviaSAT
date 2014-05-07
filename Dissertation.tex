@@ -10,6 +10,7 @@
 \usepackage{float}
 \usepackage{subfig}
 \usepackage{bmpsize}
+\usepackage{lscape}
 
 
 \DeclareMathOperator{\power}{\mathcal{P}}
@@ -153,7 +154,7 @@ The aims of the project:
 \item Evaluate the properties of the (toy) Block cipher.
 \item Explore and explain the problems with translating DES to SAT.
 \end{enumerate}
-In order to achieve these aims one will have to start with the basic knowledge. Once one grasps the basics of block ciphers, understanding DES becomes a lot simpler. Additionally a basics of Satisfiability and Boolean functions are needed. Therefore once we understand the basics, one can move onto formulating a computational problem. This will be done by formulating a block cipher as a relation. Once we have this relation, values can be assigned via a mapping to each variable. To this techniques outlined in previous chapters will provide us a way of translating our formula into a CNF formula. This formula can then be evaluated to finding a key, thus breaking the Block cipher.
+In order to achieve these aims we will have to start with the basic knowledge. Once one grasps the basics of block ciphers, understanding DES becomes a lot simpler. Additionally a basics of Satisfiability and Boolean functions are needed. Therefore once we understand the basics, one can move onto formulating a computational problem. From this we will show how to encode functional properties of a cryptographic algorithm (an encryption method) in a susceptible logic (propositional logic) that finding a model to the formula is equivalent to discovering a key in a cryptanalytic attack. Therefore we will be able to encode unique properties of DES into propositional logic with the use of propositional simplification and reverse engineering. Encoding the properties of DES is difficult because, for example, using a cryptographic attack `Known Plain text' will require over 10,000 variables and 20,000 clauses. This will be done first by formulating a block cipher as a relation. Once we have this relation, values can be assigned via a mapping to each variable. To this techniques outlined in previous chapters will provide us a way of translating our formula into a CNF formula. This formula can then be evaluated to finding a key, thus breaking the Block cipher. 
 
 The dissertation will be split up into different sections. Each section is aimed at a particular area of interest, relevant to attacking DES via SAT. Therefore the paper is split up as follows: 
 
@@ -191,16 +192,7 @@ There have been some published papers which are similar to the topic area, but n
 Other work such as `The interaction between Propositional Satisfiability and Applications in Cryptography and Ramsey Problems' \cite{Gwynne2010Interaction} is a recently published thesis that looks at a different encryption standard called Advanced Encryption Standard (AES). The paper first of all outlines and declares what Boolean functions are and SAT. The thesis paper goes into depth of how the AES works by giving a very detailed explanation along with examples of how it is runs. This is done by showing the representation of a CNF. Then there is a translation of AES into SAT with the use of Conjunctive Normal Form (CNF). Once the translation is made, the properties of AES are encoded in order to pass it through a SAT solver. Each part of AES is broken down into further smaller, more manageable parts, until the user is left with objects that can be formulated into CNF clauses. In this case of AES, they are the s-boxes. 
 The framework within the thesis provided a translation of satisfiability theorems to be used in encryption. A lot of the work talks about breaking AES which is a successor of DES. However techniques used to break AES can be adopted and will be closely linked to DES.
 
-There are other cryptanalysis techniques which include differential cryptanalysis. Differential cryptanalysis was the first method to break DES faster than the previous brute force method that the exhaustive search did. The method is based on having a device which can encrypt data with a hard-wired secret key, and we assume that we don't have the tools to `read' the key within a chip. What we then do, is to choose some blocks of data and to encrypt them with the device. The data analysis will then compute the key by analysing roughly $2^{47}$ chosen plain text bits \cite{Junod2013LASEC}. This reduced  the probability of success as we cut out a lot of computation compared to 2$^{56}$.
-
-
-
-
-
-
-
-
-
+There are other cryptanalysis techniques which include differential cryptanalysis which have been talked about in a paper by Jean-Charles et al. The paper titled `Algebraic-Differential Cryptanalysis of DES' looks into attacking specifically a round function to gain a key. Differential cryptanalysis was the first method to break DES faster than the previous brute force method that the exhaustive search did. The method is based on having a device which can encrypt data with a hard-wired secret key, and we assume that we don't have the tools to `read' the key within a chip. What we then do, is to choose some blocks of data and to encrypt them with the device. The data analysis will then compute the key by analysing roughly $2^{47}$ chosen plain text bits \cite{Junod2013LASEC}. This reduced  the probability of success as we cut out a lot of computation compared to 2$^{56}$. The result of discovering this method of attacking an encryption has risen concern to engineers that encode algorithms. New algorithms that encrypt a plain text are expected to be accompanied by evidence that it is resistant to a differential attack. Many encryptions have been proven secure by this method of attack including the successor od DES, the Advanced Encryption Standard \cite{Jean2006Diff}. The relevance of this paper highlights alternative ways of attacking DES rather than the straight forward brute force attack. This allows me to get creative and experiment with the use of SAT ways of breaking DES. 
 
 
 
@@ -215,7 +207,7 @@ A literature review is written by someone to view the critical points of current
 \section{Structure of the Paper}
 \label{sec:StrucPaper}
 
-The paper `Logical Cryptanalysis as a SAT Problem' looks into encoding cryptographic algorithms properties as a SAT problem. In layman's terms this means representing a encryption process in propositional logic, and then evaluating different properties of the said encryption. These properties may be desirable or undesirable depending on what they are. With these encoded encryptions the paper will then attempt to solve these SAT problems with the use of automated SAT solvers that have some AI conductive reasoning to obtain its results. It outlines at the very start that `finding a model for a formula encoding an algorithm is equivalent to finding a key with a cryptanalytic attack' \cite{Fabio2000LogicalSAT}. The paper will additionally look at other properties of interest such as algebraic closure or cipher integrity. These issues are in regards to the security of the encryption and how easy it is to break. In order for the encryption to keep its integrity, the cipher text should not represent the plain text in a way that makes it easy for and attacker to be able to decipher the cipher text with ease. The main focus point of the paper is to look at DES as a function and then try to encode its properties. Furthermore three `Sat provers' are used to test the encoding of DES. These `Sat provers' are:
+The paper `Logical Cryptanalysis as a SAT Problem' \cite{Fabio2000LogicalSAT} looks into encoding cryptographic algorithms properties as a SAT problem. In layman's terms this means representing a encryption process in propositional logic, and then evaluating different properties of the said encryption. These properties may be desirable or undesirable depending on what they are. With these encoded encryptions the paper will then attempt to solve these SAT problems with the use of automated SAT solvers that have some AI conductive reasoning to obtain its results. It outlines at the very start that `finding a model for a formula encoding an algorithm is equivalent to finding a key with a cryptanalytic attack' \cite{Fabio2000LogicalSAT}. The paper will additionally look at other properties of interest such as algebraic closure or cipher integrity. These issues are in regards to the security of the encryption and how easy it is to break. In order for the encryption to keep its integrity, the cipher text should not represent the plain text in a way that makes it easy for and attacker to be able to decipher the cipher text with ease. The main focus point of the paper is to look at DES as a function and then try to encode its properties. Furthermore three `Sat provers' are used to test the encoding of DES. These `Sat provers' are:
 
 \begin{itemize}
   \item rel-SAT by Bayardo and Schrag
@@ -224,25 +216,29 @@ The paper `Logical Cryptanalysis as a SAT Problem' looks into encoding cryptogra
 \end{itemize}
 Each Sat prover are tested individually using the same encoded DES. Each Sat prover will display different results, of which the results will be analysed to see the reasoning behind the performances. At the end of the paper there is a conclusion of the findings and a review of further work that can be done. 
 
-The introduction eases the reader into the basic ideas and ideology of what cryptographic algorithms are, what they are used for and the security aspects of them. Additionally the introduction gives a brief summery of what th SAT provers are and how they differ from one another in terms of their computation. It should be noted that the paper talks about technological and economical issues that can limit the results validity. These technological issues are due to the hardware of machines needed to carry out the computation with the use of a SAT prover could be better and the results of different SAT provers may differ purely based on how they use the machines hardware. For example if one SAT prover optimizes a machines full computation capabilities compared to one that doesnt, then the SAT prover that does not optimize its computation capabilities will not give a true representation of its results when compared against a SAT prover that does. 
+The introduction eases the reader into the basic ideas and ideology of what cryptographic algorithms are, what they are used for and the security aspects of them. Additionally the introduction gives a brief summery of what th SAT provers are and how they differ from one another in terms of their computation. It should be noted that the paper talks about technological and economical issues that can limit the results validity. These technological issues are due to the hardware of machines needed to carry out the computation with the use of a SAT prover could be better and the results of different SAT provers may differ purely based on how they use the machines hardware. For example if one SAT prover optimizes a machines full computation capabilities compared to one that does not, then the SAT prover that does not optimize its computation capabilities will not give a true representation of its results when compared against a SAT prover that does. 
 
 
 \section{Analysis of Findings}
 \label{sec:AnalysisOF}
-The paper proves that it is possible to encode the translation of ciphers in logic. Furthermore a number of different properties can be modelled. 
 
-%review the paper and gather meaningful data to discuss. Additiaonlly discuss what was not talked about (universal backdoor key)
+The big achievement the paper has produced is providing a framework of encoding properties of a cryptographic algorithm into a computational problem for a SAT solver to compute. Furthermore a number of different properties can be modelled such as weak keys and faithfulness. The results of encoding DES into a computational problem into the SAT solvers was in the words of the author "not very impressive". The computational time of finding a satisfiable formula for DES had a worse run time compared to differential cryptanalysis with up to 8 rounds. Additionally three rounds of DES have all ready been crystallised already and so the result bring nothing new to the previous studies. 
 
+The ATP (Advanced Theorem Provers) systems used within the paper were able to achieve some findings. The first is that they took advantage of the probability distribution or outcomes to calculate their values, without focusing on only the key bits. This was achieved by the algorithms advanced heuristics, without any user involvement. However the ATP systems were not able to complete their second goal. The second goal was to use of parallel relational sub problems to decide the value of some of the unconstrained variables from the dependant variables they have been set. If both of the previous goals were met, then evidence would be produced that a solution may be possible that the ATM systems start locating on control variables \cite{Fabio2000LogicalSAT}. 
+  
+The integrity of DES was analysed in the paper that lead to showing some evidence of DES not containing a back door (apart from semi weak keys). This evidence has been derived from showing that if more than one key would be consistent with a plain text and cipher text pair given the number of keys stay consistent with a cipher text and plain text, then a back door would have been discovered. This further strengthens the idea that there is no back door to DES (by back door we refer to a universal key that can decrypt the set of all cipher texts) \cite{Fabio2000LogicalSAT}. 
+ 
 \section{Relevance of the Paper}
 \label{sec:RelOfPaper}
-First paper to combine the two areas. Was the basis and lead onto further improvements by tacking the techniques and applying it to other encryption standards such as AES. 
-Provided a new approach at breaking DES. 
-%outline the relevance of the paper in the subject area and how it has opened up ways of attacking DES. What work has been expanded because of this paper.
+This is the first fully documented paper that has applied techniques from a mathematical background in the form of propositional logic, to try and break an encryption. If the paper was a complete success, then DES would have been considered obsolete as an encryption method (however many people already of this view already as it is vulnerable to exhaustive key search attacks). However, `Logical Cryptanalysis as a SAT Problem' \cite{Fabio2000LogicalSAT} is therefore the basis first paper to combine the two areas. Was the basis and lead onto further improvements by tacking the techniques and applying it to other encryption standards such as AES. As stated before, the paper provided evidence that DES has no back door. 
+ 
+
 
 \section{Progress Since Publication}
 \label{sec:ProgressSP}
-The paper in its conclusion left some open problems such as finding a key in less than 56 hours using standard hardware and software. In theory this has been accomplished with innovation's in technology which can allow a user to break DES in less than 56 hours. Additionally advances in other areas such as distributed computing which makes use of many machines across a wide area network to compute relatively small parts of the attack, can allow for much faster breaking of DES. 
-%What has happened in the subject area since the paper has been published? What is the relevance of that work? This section should flow straight from the previous section as it will have some links 
+Since the publication, DES has lost interest with many people as it is considered unsecure with only a 64 bit key. As a result the direction of studying DES may have been directed into other areas of cryptography such as looking at Triple DES compared to the interest it may have originally once had. Had DES been kept as the United States national encryption standard, then possible more focus would be put onto concluding the research papers further work. As a result of this there has not been many papers published with conclusions to the open questions found on pages 198-200 \cite{Fabio2000LogicalSAT}.
+The paper in its conclusion left some open problems such as finding a key in less than 56 hours using standard hardware and software. In theory this has been accomplished with innovation's in technology which can allow a user to break DES. Additionally advances in other areas such as distributed computing which makes use of many machines across a wide area network to compute relatively small parts of the attack, can allow for much faster breaking of DES. This has been discussed in the cryptography community and has often been named as `A huge cluster of computers' \cite{Junod2013LASEC}. It is reported that in 1999 the company `distributed.net' broke DES in 26 hours, with over 250,000,000,000 being computed every second \cite{Junod2013LASEC}. 
+Other research and areas of interest of developed as a result of this paper alone. The approach of breaking DES has been adapted to other cryptographic algorithms such as Triple DES and AES. The core principles of encoding the properties of the given cryptographic algorithm to find a satisfiable formula can be found in such papers as `The interaction between propositional satisfiability and applications in cryptography and Ramsay problems' \cite{Gwynne2010Interaction} which applies this method to AES. Another paper that has used methods from this paper is `Evaluating Search Heuristics and Optimization Techniques in Propositional Satisfiability' \cite{Giunchiglia01evaluatingsearch}. In this paper the author looks at testing state of the art techniques to optimize search heuristics. 
 
 
 
@@ -436,7 +432,7 @@ The basic algorithm to construct a DES is to use a block cipher which encrypts b
 
 
 
-\textbf{Formula Notation}
+\textbf{Formula Notation of DES}
 \begin{displaymath}
 DES: \{0,1\}^{64} \times \{0,1\}^{56} \rightarrow \{0,1\}^{64}
 \end{displaymath}
@@ -447,17 +443,52 @@ DES is constructed by taking in a 64 bit Plain text, mapping it to an encryption
 
 DES uses an algorithm to encrypt data which is called the Feistel network \cite{DBLP:books/sp/Buchmann02}. It works by using permutation, XOR functions (see Subsection \ref{Figure:5.2}) and round keys in order to encrypt messages. The Feistel network uses arbitrary functions $f_{1},...,f_{d}$ which maps:
 \begin{displaymath}
-FeistelNetwork: \{0,1\}^n \rightarrow \{0,1\}^n
+FeistelNetwork: \{0,1\}^n \rightarrow \{0,1\}^n.
 \end{displaymath}
-The aim of the Feistel network is to build up an intervertebral function
-%better explanation of what a intervertable function is or refer to what it is
+The aim of the Feistel network is to build up encoded message by building it up in stages. This is done by computing one round of the Feistel network. This first round will then go on to be used by the second round of the Feistel network. The important thing to note is that the same process of encrypting the cipher text through the Feistel network can be reversed using the same cipher texts and keys in order to gain the original Plain text. This is known and referred to as an intervertabral function (see Chapter \ref{cha:AnBack}).
+
 \begin{displaymath}
-F: \{0,1\}^{2n} \rightarrow \{0,1\}^{2n}
+F: \{0,1\}^{2n} \rightarrow \{0,1\}^{2n}.
 \end{displaymath}
-This function will then encrypt the message (P). We start off with two separate inputs which we will call R$_{0}$ and L$_{0}$ made up of both n bits. The total input is 2n - bits. At the first stage the R$_{0}$ will become the L$_{1}$ without any change as seen on the diagram below. However the L inputs is changed. This is done by taking the R$_{0}$ input and feeding it into the arbitrary function f$_{1}$, and the result is then XOR with L$_{0}$. This output will then become R$_{1}$ input. This process is called one round of the Feistel network.
+This function will then encrypt the Plain text (P). We start off with two separate inputs which we will call R$_{0}$ and L$_{0}$ made up of both n bits. The total input is 2n bits. At the first stage the R$_{0}$ will become the L$_{1}$ without any change as seen on the diagram below. However the L inputs is changed. This is done by taking the R$_{0}$ input and feeding it into an S-box. 
+
+S-boxes make sure the encryption is hard to break via the use of differential cryptanalysis and help obscure the relationship between the key and the output cipher text. S-boxes operate by mapping 36 bits to 48 bits. As a result we can formulate that S-boxes map:
+
+\begin{displaymath}
+S-boxes: \{0, 1\}^{36} \rightarrow \{0, 1\}^{48}.
+\end{displaymath} 
+
+This mapping is performed by using a $m \times n$ look up table to convert the 36 bits into 48. The tables size is normally fixed (with exceptions to some encryption methods such as a "Blowfish cipher", that uses different dimensions \cite{SchneierBlowfish1993}) with 4 rows and 16 columns. 
+
+\newpage
+\begin{landscape}
+\begin{figure}[H]
+\begin{center}
+\label{Fig:S-boxes}
+\includegraphics[scale = 0.6]{S-boxes.png}
+\caption{Example of a single S-box ($S_{i}$)}
+\end{center}
+\end{figure}
+\end{landscape}
+
+\newpage
+
+In total there are 8 S-boxes. An example of a mapping from 36 bits to 48, would be if we use the look up table in Figure 4.1. The input for the S-box is one 4 bit from the 36 bit $R_{0}$. The look up finds the binary value of the 4 bit and follows it to the outer most row and column to find its new value. The rows two digits are its first and last digit, where as the column value is the middle digits. For example if we take the 4 bit 1010 $\in \{0,1 \}^{36}$. Looking at Figure 4.1, we can see the row value is 01 and the column values are 0111. Therefore 
+
+\begin{displaymath}
+0101 \rightarrow 001111.
+\end{displaymath}
+
+In order to reduce 48 bits to 36, we use a similar look up method to find the new value. An example of this would be taking the 6 bit value 101111 $\in \{0,1 \}^{48}$. The row value will be the first and last digit which therefore will mean it is 11. The column value is the middle part which is 0111. From these two value, we can look up the 4 bit value which is 0010. Therefore the mapping of $\{0, 1\}^{48} \rightarrow \{0, 1\}^{36}$ will result in
+
+\begin{displaymath}
+101111 \rightarrow 0010.
+\end{displaymath}
+
+The reason the 36 bits are expanded to 48 is so that a XOR function can be applied to it. The XOR function will map the 48 bit input with a 48 bit key. After such a mapping is completed, the output of the mapping will go back into another S-box to map the 48 bits back to 32 bits. The result of this S-boxes output is then XOR with L$_{0}$. This output will then become R$_{1}$ input. This process is called one round of the Feistel network.
 \begin{figure}[h]
 \centering
-\includegraphics[width=12cm, height=5cm]{FeistelNet.png}
+\includegraphics[width=8cm, height=8cm]{FeistelNet.png}
 \label{Fig: Feistel Network}
 \caption{Illustration of a Feistel Network.}
 \end{figure}
@@ -481,7 +512,7 @@ C = IP^{-1}(R_{16}L_{16})
 \subsection{Demonstration of DES}
 \label{subsec: DemoDES}
 
-The demonstration will outline how first of all the code is generated and how the input values are determined. If we started with a message, for example:
+The demonstration will outline how first of all the code is generated and how the input values are determined. As to keep the example of DES simple, S-boxes will not be implemented. If we started with a message, for example:
 \begin{displaymath}
 M = ABCDEF0123456789
 \end{displaymath}
@@ -516,7 +547,7 @@ A \Rightarrow A = \{(x_{1}...x_{1}, y_{1}...y_{4})\}
 \end{displaymath}
 This translates as A having the binary value `1010', which is the binary for the letter A. Now we have made the connection between Block ciphers and binary arithmetic. The message will then result in a collection of 64 binary digits:
 
-%Label this output
+
 \begin{displaymath}
 M = 1010 1011 1100 1101 1110 1111 0000 0001 0010 0011 0101 0110 0111 1000 1001
 \end{displaymath}
@@ -538,7 +569,7 @@ As a result, IP must then be:
 IP(_{p}) = p_{47}, p_{23}, p_{52},...,p_{3}
 \end{displaymath}
 
-%Label this table
+
 \begin{figure}[H]
 \centering
 \label{tab:Iperm}
@@ -601,7 +632,7 @@ D$_{1}$ & 1010 & 1010 & 1001 & 1001 & 1110 & 0011 & 1110\\ \hline
 
 Using the key, one would XOR both C$_{1}$ and D$_{1}$ of which will result in:
 
-%Label this table
+
 \begin{figure}[H]
 \centering
 \label{tab:Roundmapping}
@@ -826,7 +857,8 @@ As a result we have produced a new CNF. By using this method we prove a formulas
 \subsection{Example of a Formula being Satisfiable}
 \label{subsec:ExampleFormSAT}
 
-%provide a assumption to defin and example
+Let $f$ be a CNF with 3 variables. In this case the variables we will take are $a$, $b$ and $\neg c$. If we can evaluate the formula to true, such that $a, b$ and $\neg c$ evaluate to 1, then we will have a formula that is satisfiable with a specific assignment of values to the variables. This is shown below in a 6 stage process:
+
 \begin{enumerate}
 \item $f:= (a \lor b \lor \neg c)$
 \item $\varphi: Var (f) \rightarrow \{0,1\}$
@@ -835,8 +867,7 @@ As a result we have produced a new CNF. By using this method we prove a formulas
 \item $\varphi(b):= 1$
 \item $\varphi(c):= 0$
 \end{enumerate}
-
-The first line notes what the formula function $f$ is. The second line shows that $\varphi$ maps a variable through total assignment. $Var(f)$ is the set of objects to be assigned a value. Lines 4-6 show the $\varphi$ mapping of the variables $a \rightarrow 1, b \rightarrow 1, c \rightarrow 0$. These values are arbitrary and are chosen at random.
+The first stage notes what the formula function $f$ is. The second stage shows that $\varphi$ maps a variable through total assignment. $Var(f)$ is the set of objects to be assigned a value. Stages 4-6 show the $\varphi$ mapping of the variables $a \rightarrow 1, b \rightarrow 1, c \rightarrow 0$. These values are arbitrary and are chosen at random.
 The \textit{TASS} of \textit{f} is therefore:
 
 \begin{center}
@@ -847,7 +878,8 @@ If we compute the formula $f$ through the newly assigned variables, the formula 
 \begin{displaymath}
 f(\varphi) = (1 \lor 1 \lor 1)
 \end{displaymath}
-Using the basic binary functor \emph{disjunction} (see Figure 4.2.3) we can now see that the formula will be satisfiable as the whole formula will evaluate to $1$.
+Using the basic binary functor \emph{disjunction} (see Figure 4.2.3) we can now see that the formula will be satisfiable as the whole formula will evaluate to $1$. As a result we have proven our original assumption to be true as the formula $f$ evaluates to true. This will be helpful later when we translate a (toy) block cipher in a CNF. 
+
 
 
 
@@ -881,7 +913,7 @@ This will essentially mean that random useless data is added onto the cipher tex
 \section{Interpreting a Block Cipher as a Relation}
 \label{sec:ExampleBlock}
 
-We will call block ciphers as $b$. As stated before in Section \ref{sec:BCipher}, we have the three elements of a block cipher which are $P$, $C$ and $K$. This can be seen below as $P$, $C$ and $K$ are all present. The cipher text is obtained by the relation of a plain text with a key. The key can be of different value to the length of $n$ as in theory, increasing the iterations of $K$ will strengthen the block cipher against cryptographic attacks.  
+We will call block ciphers as $b$. As stated before (see Section \ref{sec:BCipher}), we have the three elements of a block cipher which are $P$, $C$ and $K$. This can be seen below as $P$, $C$ and $K$ are all present. The cipher text is obtained by the relation of a plain text with a key. The key can be of different value to the length of $n$ as in theory, increasing the iterations of $K$ will strengthen the block cipher against cryptographic attacks.  
 \begin{displaymath}
 b: \{0,1\}^n \times \{0,1\}^k \rightarrow \{0,1\}^n.
 \end{displaymath}
@@ -893,10 +925,10 @@ Using $b$ we can use a encryption method to obtain a cipher text. This is by com
 \begin{displaymath}
 b^{-1}(C, K) = P
 \end{displaymath}
-To decrypt a cipher text we can use a intervertebral function (See \ref{sec:Term}) to obtain the original plain text. This is done by using the same process to encrypt backwards using the cipher text and the same key as before. 
+To decrypt a cipher text we can use a intervertebral function (see Section \ref{sec:Term}) to obtain the original plain text. This is done by using the same process to encrypt backwards using the cipher text and the same key as before. 
  
 In order to make the connection from the relation of block ciphers to logic we must consider the scenario were one is given two of the three parts. For example if we have $C$ and $P$ we must thus determine $K$. This is where we can apply SAT to make a logical connection from the binary values that are given within a given block cipher and form a relation via Boolean functions to determine a CNF.
-As stated before in chapter \ref{cha:prelim}, Boolean satisfiability problem is a problem described in terms of Boolean variables, which are either true or false, depending on the assignments they are given within a problem. From this we must then consider that there are a set of inputs which are represented by bits and the output can then be output as bits. In this case the block cipher operation would be
+As stated before in Chapter \ref{cha:prelim}, Boolean satisfiability problem is a problem described in terms of Boolean variables, which are either true or false, depending on the assignments they are given within a problem. From this we must then consider that there are a set of inputs which are represented by bits and the output can then be output as bits. In this case the block cipher operation would be
 \begin{displaymath}
 b(P,K,C).
 \end{displaymath}
@@ -996,7 +1028,7 @@ If it so happens that no weak key exists, we may want to know if a cipher is clo
 \begin{displaymath}
 E_{K2}(E_{K1})(P) = E_{K}(P)
 \end{displaymath} 
-is suitable for a given key K. Therefore we may want to locate a key K that is independent from the pain text (P) and only dependent on the other two keys (K1) and (K2). In the case of a closed cipher we cannot improve the security of the cipher by encrypting something twice with different keys. A different aspect of weak keys is that the cipher is more vulnerable to a brute force attack as discussed in section \ref{cha:RWork}. This is a result of two keys having the same out put thus reducing the search space for a brute force attack to half of the key bits which for DES would be 26 instead of 56. 
+is suitable for a given key K. Therefore we may want to locate a key K that is independent from the pain text (P) and only dependent on the other two keys (K1) and (K2). In the case of a closed cipher we cannot improve the security of the cipher by encrypting something twice with different keys. A different aspect of weak keys is that the cipher is more vulnerable to a brute force attack as discussed (Section \ref{cha:RWork}). This is a result of two keys having the same out put thus reducing the search space for a brute force attack to half of the key bits which for DES would be 26 instead of 56. 
 
 
 
